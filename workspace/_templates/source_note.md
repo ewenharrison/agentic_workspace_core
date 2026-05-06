@@ -11,6 +11,8 @@
 - Tier:
 - Status: `Draft`, `Candidate`, `Approved`, or `Autonomous`
 - Approval: `Not reviewed`, `User approved`, or `User requested approved note`
+- User connection: `User-authored`, `User-led or consortium-linked`, `Collaborator-authored`, `External`, or `Unclear`
+- Citation verification: `Confirmed`, `Partially confirmed`, `Unconfirmed`, or `Not applicable`
 - Date added:
 
 ## Summary
@@ -32,6 +34,11 @@
 
 ## Relevance To Project
 Explain why this source matters for the project memory.
+
+## Citation And Connection Notes
+- Verification route:
+- User or collaborator connection:
+- Citation caveats:
 
 ## Follow-Up Actions
 - [ ] Action 1

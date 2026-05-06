@@ -8,6 +8,8 @@ Use this routine whenever the user asks to save, export, render, or convert a Ma
 - Use `scripts/export-markdown-to-word.ps1`.
 - If no output path is specified, write a `.docx` file next to the source Markdown file with the same base name.
 - Overwrite the existing `.docx` export when the user asks to re-render or update the Word version.
+- If a project has `templates/word-reference.docx`, the script uses it automatically as the Pandoc reference document for styles/design.
+- Otherwise, use the repo-wide default at `workspace/_templates/word-reference.docx` when available.
 - The script renders to a temporary file first. If the existing `.docx` is locked by Word, preview, or sync, it saves a timestamped fallback `.docx` next to the source file instead of failing.
 
 ## Command
@@ -20,6 +22,12 @@ To specify a different output path:
 
 ```powershell
 powershell -ExecutionPolicy Bypass -File .\scripts\export-markdown-to-word.ps1 -InputPath "path\to\file.md" -OutputPath "path\to\file.docx"
+```
+
+To specify a different Word reference document:
+
+```powershell
+powershell -ExecutionPolicy Bypass -File .\scripts\export-markdown-to-word.ps1 -InputPath "path\to\file.md" -ReferenceDocPath "path\to\word-reference.docx"
 ```
 
 ## Pandoc Location

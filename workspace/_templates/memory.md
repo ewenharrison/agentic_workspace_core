@@ -16,8 +16,8 @@ One sentence on the immediate aim.
 - `[Q2]` Open question 2
 
 ## Active Sources
-- `[S1]` [Source title](./approved/example-source-note.md): why it matters
-- `[S2]` [Source title](./approved/example-source-note.md): why it matters
+- `[S1]` [Source title](./approved/sources/example-source-note.md): why it matters
+- `[S2]` [Framing title](./approved/framing/example-framing-note.md): why it matters
 
 ## What Changed Recently
 - Most recent update

@@ -16,7 +16,7 @@ If a procedure changes, update it here first and then only add project-specific 
 - Use `Initialise personal context` to load only the personal-context layer.
 - Use `Initialise project <project-slug>` to restart a project cleanly in a new session.
 - Load this shared-procedures file during project initialisation before acting on project tasks.
-- Load task-relevant repo procedure files during initialisation rather than discovering them only after a failure. For literature, web, journal, or URL access work, load [literature-search-protocol.md](literature-search-protocol.md).
+- Load task-relevant repo procedure files during initialisation rather than discovering them only after a failure. For literature, web, journal, or URL access work, load [literature-search-protocol.md](literature-search-protocol.md). For Word export, load [word-export.md](word-export.md).
 - Follow the read order defined in [session-init.md](./session-init.md).
 - Return a short rehydration summary covering objective, carried-forward claims, open loops, next actions, guardrails, and repo-level procedure files loaded.
 
@@ -26,8 +26,11 @@ If a procedure changes, update it here first and then only add project-specific 
 - `memory.md` is the primary quick-start briefing for every project.
 - `project.md` is for slower-changing structure, goals, decisions, and governance.
 - `approved/` is canonical.
+- New projects should organise `approved/` into `framing/`, `sources/`, and `syntheses/`, with `approved/index.md` as the canonical navigation file. Keep `approved/source-index.md` only as a backward-compatibility redirect where needed.
 - Nothing should be written into `approved/` merely because it was found during an initial web or literature search. First-pass search summaries, source notes, and candidate bibliographies belong in `working/` for human review or in `auto/` if generated autonomously.
 - Promote material into `approved/` only after explicit human-in-the-loop approval, or when the user explicitly asks to create an approved note. If a source itself is user-provided or captured for preservation, store the raw file or snapshot in `sources/`; do not treat an agent summary of it as approved until reviewed.
+- When a draft or working note is promoted to `approved/`, remove the duplicate copy from `working/` and update links to the approved version, unless the user explicitly asks to preserve a draft history there.
+- After any promotion to `approved/`, run a link/path check for the promoted filename or title, update project indexes and memory to the approved path, and verify there is no same-purpose stale copy left in `working/`. This check is mandatory before reporting completion.
 - `auto/` is provisional unless promoted.
 
 ## Tier 2 Rule
@@ -41,6 +44,7 @@ If a procedure changes, update it here first and then only add project-specific 
 - Use [literature-search-protocol.md](literature-search-protocol.md) when a task requires PubMed, Crossref, Semantic Scholar, journal, or web searches.
 - Store search strategies and executed search results separately in `working/`.
 - Store first-pass summaries of search hits in `working/` or `auto/`, not `approved/`, unless the user explicitly approves promotion.
+- When triaging sources, compare author lists and acknowledgements with loaded `profile/` identity and project collaborators where relevant. If the user appears to be an author, collaborator, trial lead, consortium lead, or otherwise directly connected, explicitly flag that relationship and adjust interpretation; do not describe the source as merely external background.
 - Use `context_scout` only for scanning existing repo context; it must not claim to have run external searches.
 - Do not conclude that a public URL is inaccessible from one failed route. Before saying a page cannot be accessed, try at least two materially different access routes where available: browser/web fetch, local `Invoke-WebRequest`, `curl` with redirects, a direct redirected URL if visible, and an unrestricted retry when the failure looks sandbox- or proxy-related.
 - Record access failures in search notes with the method used, status code or error, redirect target, date, and whether the failure is a content-level error such as `404` or an environment/client error such as TLS, proxy, connection-close, or sandbox denial.
@@ -48,6 +52,14 @@ If a procedure changes, update it here first and then only add project-specific 
 - When a real search or `Context Scout` pass finds non-trivial new material, changed framing, or evidence that could alter project positioning, follow it with a `Synthesis Agent` pass.
 - Use the `Synthesis Agent` to integrate new findings with existing memory, novelty claims, open loops, and current project framing before deciding what becomes an approved note or a project-memory update.
 - Minor confirmatory search results do not always require a synthesis pass.
+
+## Citation Integrity Rule
+
+- For literature reviews, factual briefings, commentary drafts, grant text, policy notes, and other fact-bearing working drafts, include formal citations or source keys against factual claims for the user's review.
+- These working citations may later be removed from public-facing final copy when the user asks, but the cited internal version should remain available unless the user asks otherwise.
+- Use only citations from confirmed sources: local source files supplied by the user, extracted PDFs, official journal pages, PubMed/Crossref/DOI records, official organisation pages, or executed search-results notes.
+- Never generate a bibliographic citation from model memory alone. If a citation has not been confirmed, either verify it first or mark the claim as `[source needed]`.
+- If a factual claim cannot be supported by the confirmed source set, do not smooth over the gap. Search, ask, or remove the claim.
 
 ## Agent Run Register Rule
 

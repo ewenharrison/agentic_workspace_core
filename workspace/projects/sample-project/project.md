@@ -5,7 +5,7 @@ This sample project shows how academic memory can be organized with reviewed and
 
 ## Quick Access
 - Fast session briefing: [memory.md](./memory.md)
-- Approved source map: [approved/source-index.md](./approved/source-index.md)
+- Approved index: [approved/index.md](./approved/index.md)
 - Session bootstrap: [init.md](./init.md)
 - Shared procedures: [../../repo/shared-procedures.md](../../repo/shared-procedures.md)
 
@@ -38,7 +38,7 @@ Open `memory.md` first when resuming this project. Use this file for slower-chan
 Follow shared repo procedures unless this project explicitly documents an exception.
 
 ## Important Sources
-- None yet
+- Add links to approved framing, synthesis and source notes here.
 
 ## Risks Or Unknowns
 - The preferred intake workflow may evolve after first use

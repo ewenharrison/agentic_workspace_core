@@ -1,5 +1,8 @@
 # Local secrets
-config/
+config/teams-webhook-url.txt
+config/slack-webhook-url.txt
+config/slack-webhooks.json
+config/gmail-smtp.json
 
 # Export artefacts
 exports/
@@ -8,3 +11,4 @@ exports/
 .DS_Store
 Thumbs.db
 .vscode/
+~$*.docx

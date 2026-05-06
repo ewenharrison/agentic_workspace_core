@@ -23,7 +23,7 @@ When the user gives the initialisation command, the agent should:
 3. Open task-relevant repo procedures before acting. For literature, web, PubMed, Crossref, Semantic Scholar, journal, or URL access work, open `workspace/repo/literature-search-protocol.md`. For Word export, open `workspace/repo/word-export.md`.
 4. Open `workspace/projects/<project-slug>/memory.md`.
 5. Open `workspace/projects/<project-slug>/project.md`.
-6. Open `workspace/projects/<project-slug>/approved/source-index.md` for evidence navigation.
+6. Open `workspace/projects/<project-slug>/approved/index.md` for approved evidence navigation. If an older project does not have this file, fall back to `approved/source-index.md`.
 7. Open `workspace/projects/<project-slug>/auto/source-index.md` if Tier 2 is enabled or recent exploratory work matters.
 8. Check `workspace/projects/<project-slug>/logs/activity.md` for the latest operational changes.
 9. Return a short rehydration summary covering:
@@ -49,7 +49,7 @@ This command means: "We are starting again. Reload the project context from the 
 - `profile/context.md` is the optional global pre-project briefing file.
 - `memory.md` remains the primary quick-start file.
 - `project.md` remains the slower-changing governance and structure file.
-- `approved/` is canonical.
+- `approved/` is canonical. New projects should organise approved material as `approved/framing/`, `approved/sources/`, and `approved/syntheses/`, with `approved/index.md` as the live navigation file and `approved/source-index.md` retained only as a backward-compatibility redirect.
 - `auto/` is provisional unless promoted.
 - Repo-level procedures are part of initialisation, not optional background context.
 - Prefer British English spelling in repo documentation and memory files where practical.

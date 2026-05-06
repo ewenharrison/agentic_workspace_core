@@ -9,7 +9,7 @@ Use this project as a model for creating real academic projects.
 ## Key Claims We Are Carrying Forward
 - `[C1]` `memory.md` is the main quick-start file for any project.
 - `[C2]` `project.md` should hold slower-changing structure, goals, and governance.
-- `[C3]` `approved/` should hold supporting evidence and durable source notes rather than acting as the main interface.
+- `[C3]` `approved/index.md` is the navigation surface for reviewed framing, source notes, and syntheses.
 
 ## Open Loops
 - `[Q1]` Which additional lightweight conventions would make this repo easiest to maintain long term?

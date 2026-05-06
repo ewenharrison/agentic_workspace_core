@@ -1,16 +1,5 @@
 # Approved Source Index
 
-Approved source notes for this project should be listed here.
+This file is kept only for backward compatibility.
 
-## How To Use This File
-- Use this as a curated source map, not just a list of filenames.
-- Read `memory.md` first for project state.
-- Use source IDs like `[S1]`, `[S2]`, `[S3]` when connecting evidence to project claims.
-
-## Current Core Sources
-- None yet
-
-## By Function
-- Novelty benchmark:
-- Field map:
-- Conceptual framing:
+The live approved navigation file is now [index.md](./index.md).

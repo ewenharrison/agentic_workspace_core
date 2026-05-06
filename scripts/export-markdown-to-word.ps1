@@ -4,6 +4,8 @@ param(
 
     [string]$OutputPath,
 
+    [string]$ReferenceDocPath,
+
     [string]$PandocPath
 )
 
@@ -27,6 +29,31 @@ if ($PandocPath -and -not (Test-Path -LiteralPath $PandocPath)) {
     throw "Pandoc was not found at the specified path: $PandocPath"
 }
 
+if (-not $ReferenceDocPath) {
+    $searchDirectory = $inputItem.Directory
+    while ($searchDirectory) {
+        $candidateReferenceDocs = @(
+            (Join-Path $searchDirectory.FullName "templates\word-reference.docx"),
+            (Join-Path $searchDirectory.FullName "_templates\word-reference.docx")
+        )
+        foreach ($candidateReferenceDoc in $candidateReferenceDocs) {
+            if (Test-Path -LiteralPath $candidateReferenceDoc) {
+                $ReferenceDocPath = $candidateReferenceDoc
+                break
+            }
+        }
+        if ($ReferenceDocPath) {
+            break
+        }
+        $searchDirectory = $searchDirectory.Parent
+    }
+}
+
+if ($ReferenceDocPath) {
+    $resolvedReferenceDoc = Resolve-Path -LiteralPath $ReferenceDocPath
+    $ReferenceDocPath = $resolvedReferenceDoc.Path
+}
+
 if (-not $PandocPath) {
     $pandocCommand = Get-Command pandoc -ErrorAction SilentlyContinue
     if ($pandocCommand) {
@@ -45,11 +72,18 @@ if (-not $PandocPath) {
 
 $temporaryOutput = Join-Path $env:TEMP ("markdown-word-export-" + [guid]::NewGuid().ToString() + ".docx")
 
-& $PandocPath `
-    $inputItem.FullName `
-    --from gfm `
-    --to docx `
-    --output $temporaryOutput
+$pandocArgs = @(
+    $inputItem.FullName,
+    "--from", "gfm",
+    "--to", "docx",
+    "--output", $temporaryOutput
+)
+
+if ($ReferenceDocPath) {
+    $pandocArgs += @("--reference-doc", $ReferenceDocPath)
+}
+
+& $PandocPath @pandocArgs
 
 if ($LASTEXITCODE -ne 0) {
     throw "Pandoc failed with exit code $LASTEXITCODE."
@@ -75,6 +109,7 @@ $outputItem = Get-Item -LiteralPath $OutputPath
 [pscustomobject]@{
     Input = $inputItem.FullName
     Output = $outputItem.FullName
+    ReferenceDoc = $ReferenceDocPath
     SizeKB = [Math]::Round($outputItem.Length / 1KB, 1)
     LastWriteTime = $outputItem.LastWriteTime.ToString("yyyy-MM-dd HH:mm:ss")
 }

@@ -10,6 +10,12 @@ Use this file as the running shortlist of framework improvements that may be pro
 
 ## Current Candidates
 
+### 2026-05-01: approved index folder convention
+- Status: `Promote now`
+- Why: approved material becomes hard to navigate when internal framing, source notes, and syntheses sit together in one flat folder.
+- Evidence: multiple live projects proved the pattern with `approved/framing/`, `approved/sources/`, `approved/syntheses/`, and `approved/index.md`; repo templates, session initialisation, shared procedures, README guidance, and the Tier 2 runner now prefer `approved/index.md` while retaining `approved/source-index.md` as a backward-compatibility redirect.
+- Scope: applies to new projects and projects explicitly migrated later; existing older projects can remain unchanged until there is a reason to reorganise them.
+
 ### 2026-04-15: `init.md` as a standard project bootstrap
 - Status: `Promote now`
 - Why: this improves project rehydration for any project and is already reusable.
@@ -84,7 +90,7 @@ Use this file as the running shortlist of framework improvements that may be pro
 ### 2026-04-28: multi-route web access failure checks
 - Status: `Promote now`
 - Why: single-route web failures can be false negatives because sandbox proxying, redirects, TLS handling, user-agent handling, or institutional hosting layers can differ by client.
-- Evidence: a live project setup exposed a false inaccessible-page conclusion that was resolved by trying a different client and following the redirect chain.
+- Evidence: live project work exposed a false inaccessible-page conclusion that was resolved by trying a different client and following the redirect chain.
 
 ### 2026-04-28: repo procedures loaded during project initialisation
 - Status: `Promote now`
@@ -95,6 +101,22 @@ Use this file as the running shortlist of framework improvements that may be pro
 - Status: `Promote now`
 - Why: `approved/` should mean human-reviewed canonical memory. Initial web-search summaries can be useful and well formed but should not acquire approved status without explicit human-in-the-loop promotion.
 - Evidence: live project setup revealed that candidate literature found during initialisation could be placed into an approved source index before review.
+
+### 2026-04-28: source triage checks user authorship and collaborator connection
+- Status: `Promote now`
+- Why: sources authored by the user or close collaborators should be interpreted differently from generic external background, especially when they establish prior field position or continuity.
+- Evidence: live literature triage initially framed directly connected prior work as generic external background; the source-connection check corrects that failure mode.
+
+### 2026-04-30: repo-wide email and note-capture procedures
+- Status: `Watch`
+- Why: email handling and note capture are useful across projects, but the implementation depends on session-level connector availability and private destination details.
+- Evidence: live use showed the workflow is valuable, but public promotion needs a connector-agnostic and destination-free version.
+
+### 2026-05-01: citation integrity for fact-bearing drafts
+- Status: `Promote now`
+- Why: literature reviews, commentary drafts, grants, and policy notes need internal citation keys against factual claims to prevent unsupported assertions and hallucinated references.
+- Evidence: live drafting workflows required cited working drafts and confirmed source maps; the rule is now recorded in shared procedures and the literature-search protocol.
+
 ## How To Use This File
 
 - Add one short entry when a new repo-level pattern emerges.

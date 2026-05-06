@@ -15,7 +15,7 @@ Shared procedure details live in [../../repo/shared-procedures.md](../../repo/sh
 
 1. [memory.md](./memory.md)
 2. [project.md](./project.md)
-3. [approved/source-index.md](./approved/source-index.md)
+3. [approved/index.md](./approved/index.md)
 4. [auto/source-index.md](./auto/source-index.md)
 5. [logs/activity.md](./logs/activity.md)
 

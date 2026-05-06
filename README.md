@@ -22,6 +22,7 @@ The design centres on three ideas:
 - `memory.md` is the fast briefing file for resuming work
 - `project.md` holds slower-changing goals, decisions, and governance
 - `approved/` and `auto/` stay separate so reviewed knowledge and exploratory agent output do not get mixed together
+- `approved/index.md` is the navigation surface for reviewed material
 
 ## Folder Layout
 
@@ -35,7 +36,11 @@ profile/
   relationships.md
   active_notes.md
   approved/
+    index.md
     source-index.md
+    framing/
+    sources/
+    syntheses/
   auto/
     source-index.md
   logs/
@@ -105,8 +110,6 @@ Example pattern:
 - `working/search-strategy-<topic>.md`
 - `working/search-results-<topic>.md`
 
-First-pass search summaries and candidate bibliography notes should also stay in `working/` or `auto/` until explicitly promoted. Do not put search-derived summaries directly into `approved/` just because they are tidy or well cited.
-
 ### `workspace/runs/agent-runs.md`
 
 The cross-project control surface for agent runs.
@@ -124,6 +127,14 @@ GitHub remains the audit layer, but the run register should be the human-readabl
 
 The trusted layer.
 Use it for reviewed source notes and durable project knowledge.
+
+New projects should organise approved material as:
+
+- `approved/index.md` for the main approved navigation map
+- `approved/framing/` for approved framing or concept notes
+- `approved/sources/` for approved source notes
+- `approved/syntheses/` for approved synthesis notes
+- `approved/source-index.md` only as a backward-compatibility redirect
 
 `approved/` means human-reviewed canonical memory. Raw user-provided files can live in `sources/`, but an agent summary of them is not approved until reviewed or explicitly requested as an approved note.
 
@@ -147,6 +158,7 @@ Use it for agent-generated summaries, rough synthesis, and provisional material 
 - workflow notes
 - a sample project
 - utility scripts that are generic enough to reuse
+- optional Slack and Teams webhook posting helpers
 
 ## Not Included in Core
 
@@ -154,6 +166,7 @@ Use it for agent-generated summaries, rough synthesis, and provisional material 
 - private notes or source material
 - local configuration and secrets
 - project-specific operational details that are not general defaults
+- private email or note-capture routing details
 
 ## Cloud Tier 2 Workflow
 
@@ -190,14 +203,28 @@ The standard read order is:
 
 1. `profile/context.md` if present
 2. `workspace/repo/shared-procedures.md`
-3. task-relevant repo procedures, such as `workspace/repo/literature-search-protocol.md` for web, literature, journal, or URL access work
+3. task-relevant repo procedures, such as `workspace/repo/literature-search-protocol.md` for literature, web, journal, or URL access work
 4. `memory.md`
 5. `project.md`
-6. `approved/source-index.md`
+6. `approved/index.md`, falling back to `approved/source-index.md` for older projects
 7. `auto/source-index.md`
 8. `logs/activity.md`
 
-The rehydration summary should state which repo-level procedures were loaded. If a public URL appears inaccessible, follow the literature-search protocol before concluding it is unavailable: try materially different access routes and distinguish content-level failures from sandbox, proxy, TLS, or client failures.
+## Collaboration Updates
+
+Core includes optional webhook helpers for collaborator-facing project updates:
+
+- Teams updates: `scripts/post-teams-update.ps1`, reading `collab/teams-update.md`
+- Slack updates: `scripts/post-slack-update.ps1`, reading `collab/slack-update.md`
+- Long Slack file posts: `scripts/post-slack-file.ps1`
+
+Store real webhook URLs outside git in `config/teams-webhook-url.txt`, `config/slack-webhook-url.txt`, `config/slack-webhooks.json`, or the matching environment variables. The files ending in `.example` are placeholders only.
+
+## Evidence And Citation Discipline
+
+For fact-bearing drafts, use confirmed sources only: local files, extracted PDFs, executed search-results notes, official pages, DOI/PubMed/Crossref records, or other checked records. If a claim lacks support, mark it as `[source needed]`, search, ask, or remove it.
+
+When triaging sources, note whether the user or a known collaborator appears connected to the source. That relationship can change interpretation, but uncertain name matches should stay marked as unclear.
 
 To load only the personal-context layer, use:
 

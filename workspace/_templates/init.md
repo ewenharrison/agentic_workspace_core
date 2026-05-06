@@ -17,7 +17,7 @@ Shared procedure details live in [../../repo/shared-procedures.md](../../repo/sh
 2. Task-relevant repo procedure files, such as [../../repo/literature-search-protocol.md](../../repo/literature-search-protocol.md) for external literature, web, journal, or URL access work
 3. [memory.md](./memory.md)
 4. [project.md](./project.md)
-5. [approved/source-index.md](./approved/source-index.md)
+5. [approved/index.md](./approved/index.md)
 6. [auto/source-index.md](./auto/source-index.md)
 7. [logs/activity.md](./logs/activity.md)
 

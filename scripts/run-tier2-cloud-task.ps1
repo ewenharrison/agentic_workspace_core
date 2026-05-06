@@ -392,7 +392,10 @@ $sourceIndexPath = Join-Path $autoDir "source-index.md"
 $lanePolicyPath = Resolve-LanePolicyPath -AutoDirectory $autoDir
 $memoryPath = Join-Path $projectRoot "memory.md"
 $projectPath = Join-Path $projectRoot "project.md"
-$approvedIndexPath = Join-Path $projectRoot "approved\source-index.md"
+$approvedIndexPath = Join-Path $projectRoot "approved\index.md"
+if (-not (Test-Path -LiteralPath $approvedIndexPath)) {
+    $approvedIndexPath = Join-Path $projectRoot "approved\source-index.md"
+}
 
 if ([string]::IsNullOrWhiteSpace($lanePolicyPath) -or -not (Test-Path -LiteralPath $lanePolicyPath)) {
     throw "Tier 2 lane policy missing for '$Project'. Expected an autonomous-lane-policy note in '$autoDir'."
@@ -412,7 +415,7 @@ $latestAutoNotes = Get-ChildItem -LiteralPath $autoDir -Filter *.md |
 $contextBlocks = @(
     (Get-TrimmedFileBlock -Path $memoryPath -Label "Project Snapshot"),
     (Get-TrimmedFileBlock -Path $projectPath -Label "Project Structure"),
-    (Get-TrimmedFileBlock -Path $approvedIndexPath -Label "Approved Source Index"),
+    (Get-TrimmedFileBlock -Path $approvedIndexPath -Label "Approved Index"),
     (Get-TrimmedFileBlock -Path $sourceIndexPath -Label "Autonomous Source Index"),
     (Get-TrimmedFileBlock -Path $logsPath -Label "Activity Log" -MaxChars 4000),
     (Get-TrimmedFileBlock -Path $lanePolicyPath -Label "Autonomous Lane Policy" -MaxChars 2500)
@@ -447,7 +450,7 @@ if ($SkipModelCall) {
             evidence_used = @(
                 "memory.md",
                 "project.md",
-                "approved/source-index.md",
+                "approved/index.md",
                 "auto/source-index.md",
                 "logs/activity.md"
             )

@@ -39,8 +39,32 @@ The results file should include:
 - short inclusion rationale
 - exclusion rationale for near-misses
 - whether each source is directly on-point, adjacent but useful, or background only
+- whether the user or known project collaborators appear in the author list, acknowledgements, consortium byline, or source provenance
+- verification status for each citation, including the route used to confirm it: journal page, DOI record, PubMed, Crossref, local PDF, official organisation page, or other named source
 
 Search-results files and first-pass source summaries should normally be saved in `working/`. They are evidence-gathering artefacts, not approved memory. Do not write search-derived summaries into `approved/` until the user has reviewed and explicitly approved them for promotion.
+
+## Citation Use Rule
+
+- Do not cite sources from memory or plausible recall alone.
+- Only use references that have been confirmed through an executed search, local source file, DOI/PubMed/Crossref record, journal page, or official organisation page.
+- When drafting fact-bearing prose for the user, include internal citations or source keys against factual claims unless the user explicitly asks for clean final copy.
+- If a source is not yet confirmed, write `[source needed]` rather than inventing or approximating a citation.
+- Maintain a local source map for substantial drafts so citation keys can be traced back to confirmed records.
+
+## Authorship And User-Connection Check
+
+For each high-priority source, check whether the user appears to be directly connected to the work. Use loaded `profile/` identity, project memory, known collaborator names, author initials, affiliations, and source provenance.
+
+Classify user connection where relevant:
+
+- `User-authored`: the user appears in the author list or consortium author group.
+- `User-led or consortium-linked`: the user appears to have led, coordinated, or contributed through a named collaborative group.
+- `Collaborator-authored`: a known collaborator or project partner appears.
+- `External`: no obvious direct connection.
+- `Unclear`: possible name/initials match but insufficient evidence.
+
+If a source is user-authored or directly connected, state this plainly in the working note and use it to sharpen interpretation. For example, prior user-authored work may be best framed as an established foundation or continuity point, not as generic external literature. Do not overclaim authorship from initials alone; mark uncertain matches as `Unclear`.
 
 ## Web Access Failure Checks
 

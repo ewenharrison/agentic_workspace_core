@@ -1,0 +1,5 @@
+{
+  "default": "https://hooks.slack.com/services/REPLACE/THIS/DEFAULT",
+  "research": "https://hooks.slack.com/services/REPLACE/THIS/RESEARCH",
+  "lab": "https://hooks.slack.com/services/REPLACE/THIS/LAB"
+}

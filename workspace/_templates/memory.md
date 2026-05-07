@@ -18,6 +18,7 @@ One sentence on the immediate aim.
 ## Active Sources
 - `[S1]` [Source title](./approved/sources/example-source-note.md): why it matters
 - `[S2]` [Framing title](./approved/framing/example-framing-note.md): why it matters
+- `[O1]` [Output title](./approved/outputs/example-output.md): final or agreed deliverable, if relevant
 
 ## What Changed Recently
 - Most recent update

@@ -49,7 +49,7 @@ This command means: "We are starting again. Reload the project context from the 
 - `profile/context.md` is the optional global pre-project briefing file.
 - `memory.md` remains the primary quick-start file.
 - `project.md` remains the slower-changing governance and structure file.
-- `approved/` is canonical. New projects should organise approved material as `approved/framing/`, `approved/sources/`, and `approved/syntheses/`, with `approved/index.md` as the live navigation file and `approved/source-index.md` retained only as a backward-compatibility redirect.
+- `approved/` is canonical. New projects should organise approved material as `approved/framing/`, `approved/sources/`, `approved/syntheses/`, and `approved/outputs/`, with `approved/index.md` as the live navigation file and `approved/source-index.md` retained only as a backward-compatibility redirect.
 - `auto/` is provisional unless promoted.
 - Repo-level procedures are part of initialisation, not optional background context.
 - Prefer British English spelling in repo documentation and memory files where practical.

@@ -6,7 +6,7 @@ This is the main navigation map for approved Tier 1 material in `sample-project`
 
 - Start here when you want the approved view of the project.
 - Read [memory.md](../memory.md) first for current project state.
-- Use the sections below to distinguish framing, synthesis, and source material.
+- Use the sections below to distinguish framing, source notes, syntheses, and completed outputs.
 - Keep [source-index.md](./source-index.md) only as a backward-compatibility redirect.
 
 ## Core Framing
@@ -21,8 +21,14 @@ This is the main navigation map for approved Tier 1 material in `sample-project`
 
 - None yet
 
-## By Function
 
+## Outputs And Deliverables
+
+- None listed yet
+
+## By Function
 - Core framing:
 - Evidence:
 - Synthesis:
+- Outputs:
+

@@ -35,9 +35,12 @@ Autonomous memory is useful working memory, but it should not be treated as trus
 - `general` is for broad project maintenance.
 - `context_scout` is for scanning existing repo context only.
 - `synthesis_agent` is for integrating supplied evidence, notes, and search results with current project framing.
-- `literature_scout` is reserved for a future workflow with real external search capability and should not be used as a prompt-only cloud mode.
+- `pubmed_literature_search` is the first formal external-search workflow. It executes a saved PubMed protocol and writes a working search-results note.
+- `literature_scout` is reserved for a future broader workflow with real external search capability and should not be used as a prompt-only cloud mode.
 
-When a task requires PubMed, Crossref, Semantic Scholar, journal, or web retrieval, follow [literature-search-protocol.md](../repo/literature-search-protocol.md) and create a separate search-results note before synthesis.
+When a task requires PubMed retrieval, follow [literature-search-protocol.md](../repo/literature-search-protocol.md) and use the `PubMed Literature Search` workflow where appropriate. When a task requires Crossref, Semantic Scholar, journal, or web retrieval, continue to create a separate search-results note before synthesis until formal source-specific workflows exist.
+
+Before dispatching any GitHub Actions-backed Tier 2 process, commit and push all required workflow, script, template, procedure, and project input files. The cloud runner only sees the repository state on GitHub, not local uncommitted changes.
 
 ## Possible Future Requirement
 

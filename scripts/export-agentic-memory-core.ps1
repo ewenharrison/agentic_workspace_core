@@ -24,11 +24,13 @@ $includePaths = @(
     "workspace\registry\index.core.md",
     "workspace\runs\agent-runs.core.md",
     "workspace\projects\sample-project",
+    ".github\workflows\pubmed-literature-search.yml",
     ".github\workflows\tier2-cloud-maintenance.core.yml",
     "scripts\export-markdown-to-word.ps1",
     "scripts\post-slack-file.ps1",
     "scripts\post-slack-update.ps1",
     "scripts\post-teams-update.ps1",
+    "scripts\run-pubmed-literature-search.ps1",
     "scripts\run-tier2-cloud-task.ps1",
     "scripts\export-agentic-memory-core.ps1"
 )

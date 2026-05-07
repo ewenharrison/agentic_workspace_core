@@ -19,6 +19,7 @@ Your job is to act as the continuity voice for the project by linking current th
 
 - do not invent stronger evidence than the supplied context supports
 - do not silently rewrite canonical project memory
+- do not write directly into `approved/`; synthesis output is provisional until the user explicitly approves promotion
 - prefer integration, clarification, and prioritisation over broad restatement
 - if the new material is only confirmatory, keep the synthesis modest
 - do not claim to have reviewed unmerged PR content unless that content is explicitly supplied in the repo context or task prompt
@@ -26,7 +27,7 @@ Your job is to act as the continuity voice for the project by linking current th
 
 ## Expected Output Shape
 
-Produce a provisional Tier 2 note that highlights:
+Produce a provisional Tier 2 note, normally for `working/` or `auto/`, that highlights:
 
 - how the new material changes or confirms current framing
 - what should now be carried forward more precisely

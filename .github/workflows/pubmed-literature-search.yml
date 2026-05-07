@@ -1,0 +1,127 @@
+name: PubMed Literature Search
+
+on:
+  workflow_dispatch:
+    inputs:
+      project_slug:
+        description: "Project slug to search for"
+        required: true
+        default: "sample-project"
+      protocol_path:
+        description: "Path to the saved PubMed search protocol markdown file"
+        required: true
+      max_results:
+        description: "Maximum PubMed records to return, capped at 500"
+        required: false
+        default: "50"
+      sort:
+        description: "PubMed sort order"
+        required: false
+        default: "relevance"
+        type: choice
+        options:
+          - relevance
+          - pub date
+          - most recent
+      run_synthesis:
+        description: "Run synthesis_agent on the returned search-results file in the same PR"
+        required: false
+        default: "true"
+        type: choice
+        options:
+          - "true"
+          - "false"
+      synthesis_prompt:
+        description: "Optional extra instruction for synthesis_agent"
+        required: false
+        default: ""
+
+permissions:
+  contents: write
+  pull-requests: write
+
+concurrency:
+  group: pubmed-literature-search-${{ github.event.inputs.project_slug }}
+  cancel-in-progress: false
+
+jobs:
+  pubmed-search:
+    runs-on: windows-latest
+    env:
+      OPENAI_API_KEY: ${{ secrets.OPENAI_API_KEY }}
+      OPENAI_MODEL: ${{ vars.OPENAI_MODEL }}
+      OPENAI_REASONING_EFFORT: ${{ vars.OPENAI_REASONING_EFFORT }}
+      NCBI_API_KEY: ${{ secrets.NCBI_API_KEY }}
+      NCBI_EMAIL: ${{ vars.NCBI_EMAIL }}
+
+    steps:
+      - name: Check out repository
+        uses: actions/checkout@v6
+
+      - name: Run PubMed search
+        id: pubmed
+        shell: pwsh
+        run: |
+          $maxResults = [int]"${{ github.event.inputs.max_results }}"
+          $resultJson = .\scripts\run-pubmed-literature-search.ps1 `
+            -Project "${{ github.event.inputs.project_slug }}" `
+            -ProtocolPath "${{ github.event.inputs.protocol_path }}" `
+            -MaxResults $maxResults `
+            -Sort "${{ github.event.inputs.sort }}" `
+            -RunMode "github-actions"
+
+          $result = $resultJson | ConvertFrom-Json
+          "result_path=$($result.ResultPath)" >> $env:GITHUB_OUTPUT
+          "search_title=$($result.SearchTitle)" >> $env:GITHUB_OUTPUT
+          "hit_count=$($result.HitCount)" >> $env:GITHUB_OUTPUT
+          "returned_records=$($result.ReturnedRecords)" >> $env:GITHUB_OUTPUT
+
+      - name: Run synthesis agent
+        if: github.event.inputs.run_synthesis == 'true'
+        shell: pwsh
+        run: |
+          $extraPrompt = "${{ github.event.inputs.synthesis_prompt }}"
+          $promptLines = @(
+            "Use ${{ steps.pubmed.outputs.result_path }} as the executed PubMed search-results file.",
+            "Integrate these results with memory.md, project.md, approved notes, current open questions, and repo-level literature-search procedures.",
+            "Do not promote anything to approved memory.",
+            "Identify which records look directly on-point, adjacent but useful, background only, or likely excludable.",
+            "Note whether any source appears connected to the user or known project collaborators only when supported by supplied context."
+          )
+          if (-not [string]::IsNullOrWhiteSpace($extraPrompt)) {
+            $promptLines += "Extra instruction from workflow input: $extraPrompt"
+          }
+          $prompt = $promptLines -join "`n"
+
+          .\scripts\run-tier2-cloud-task.ps1 `
+            -Project "${{ github.event.inputs.project_slug }}" `
+            -AgentMode "synthesis_agent" `
+            -TaskPrompt $prompt `
+            -RunMode "pubmed-literature-search"
+
+      - name: Detect repo changes
+        id: changes
+        shell: pwsh
+        run: |
+          $hasChanges = if ((git status --porcelain).Length -gt 0) { "true" } else { "false" }
+          "has_changes=$hasChanges" >> $env:GITHUB_OUTPUT
+
+      - name: Create pull request
+        if: steps.changes.outputs.has_changes == 'true'
+        uses: peter-evans/create-pull-request@v8
+        with:
+          commit-message: "literature: run PubMed search for ${{ github.event.inputs.project_slug }}"
+          branch: "literature/pubmed-${{ github.event.inputs.project_slug }}-${{ github.run_id }}"
+          title: "literature: PubMed search for ${{ github.event.inputs.project_slug }}"
+          body: |
+            This PR was opened automatically by the PubMed Literature Search workflow.
+
+            Project: `${{ github.event.inputs.project_slug }}`
+            Protocol: `${{ github.event.inputs.protocol_path }}`
+            Search title: `${{ steps.pubmed.outputs.search_title }}`
+            Result file: `${{ steps.pubmed.outputs.result_path }}`
+            PubMed hit count: `${{ steps.pubmed.outputs.hit_count }}`
+            Returned records: `${{ steps.pubmed.outputs.returned_records }}`
+            Synthesis agent run: `${{ github.event.inputs.run_synthesis }}`
+
+            The PubMed result note is working evidence, not approved memory. Review the search protocol, query translation, returned records, and any synthesis output before merging or promoting anything to `approved/`.

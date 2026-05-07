@@ -1,5 +1,7 @@
 # Source Note
 
+Default location: save new literature/source summaries in `working/` unless the user explicitly asks to create an approved note or explicitly approves promotion. A polished source note is still provisional until reviewed.
+
 ## Metadata
 - Title:
 - Authors:

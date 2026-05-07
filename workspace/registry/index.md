@@ -20,6 +20,7 @@ For each new project, create:
 - `workspace/projects/<project-slug>/approved/framing/`
 - `workspace/projects/<project-slug>/approved/sources/`
 - `workspace/projects/<project-slug>/approved/syntheses/`
+- `workspace/projects/<project-slug>/approved/outputs/`
 - `workspace/projects/<project-slug>/auto/source-index.md`
 - `workspace/projects/<project-slug>/auto/autonomous-lane-policy.md` when Tier 2 is enabled proactively
 - `workspace/projects/<project-slug>/logs/activity.md`

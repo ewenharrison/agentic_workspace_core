@@ -37,7 +37,7 @@ Open `memory.md` first when resuming this project. Use this file for slower-chan
 Follow shared repo procedures unless this project explicitly documents an exception.
 
 ## Important Sources
-- Add links to approved framing, synthesis and source notes here.
+- Add links to approved framing, source notes, syntheses, and outputs here.
 
 ## Risks Or Unknowns
 - Risk 1

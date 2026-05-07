@@ -25,6 +25,32 @@ The strategy file should include:
 - priority venues or journals
 - planned screening categories
 
+For a cloud PubMed run, prefer the structured template at [../_templates/pubmed_search_protocol.md](../_templates/pubmed_search_protocol.md). The PubMed workflow requires a `## PubMed Query` section with the exact query in a fenced `text` block.
+
+## Cloud PubMed Search Workflow
+
+Use the `PubMed Literature Search` GitHub Actions workflow when a saved protocol should be executed in the cloud.
+
+Preflight requirement:
+
+- Commit and push the saved PubMed protocol file before dispatching the workflow.
+- Commit and push any workflow YAML, script, template, or procedure changes that the PubMed workflow depends on before dispatch.
+- Confirm the workflow is available on GitHub with `gh workflow list` or the GitHub Actions UI before running it.
+- Remember that GitHub Actions cannot see local uncommitted search strategies, scripts, or workflow files.
+
+Inputs:
+
+- `project_slug`: the target project folder under `workspace/projects/`
+- `protocol_path`: repo-relative path to the saved PubMed protocol file
+- `max_results`: number of PubMed records to return, capped at 500 for the first implementation
+- `sort`: `relevance`, `pub date`, or `most recent`
+- `run_synthesis`: whether to run `synthesis_agent` on the returned search-results file in the same PR
+- `synthesis_prompt`: optional extra instruction for the synthesis handoff
+
+The workflow writes a PubMed results note into `workspace/projects/<project>/working/`, updates the project activity log, updates `workspace/runs/agent-runs.md`, and opens a PR. If synthesis is enabled, the same PR also contains the provisional Tier 2 synthesis note in `auto/`.
+
+For now this workflow searches PubMed only. Do not use it as evidence of Embase, arXiv, medRxiv, Google Scholar, journal-site, or broader web coverage.
+
 ## Search Results File
 
 The results file should include:
@@ -104,9 +130,10 @@ Act as Synthesis Agent. Use workspace/projects/<project>/working/search-results-
 
 - `context_scout`: scans existing repo context only.
 - `synthesis_agent`: integrates supplied context and search results.
-- `literature_scout`: reserved for a future workflow that can actually retrieve external literature.
+- `pubmed_literature_search`: executes a saved PubMed protocol through NCBI E-utilities and writes a working search-results note.
+- `literature_scout`: reserved for a future broader workflow that can retrieve external literature across multiple sources.
 
-Until an external-search workflow exists, do not trigger `literature_scout` as a cloud mode.
+Until a broader external-search workflow exists, do not trigger `literature_scout` as a cloud mode. Use the PubMed workflow for PubMed-only retrieval.
 
 ## Guardrail
 

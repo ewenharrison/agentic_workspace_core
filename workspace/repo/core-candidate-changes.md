@@ -100,7 +100,7 @@ Use this file as the running shortlist of framework improvements that may be pro
 ### 2026-04-28: stricter approval boundary for search-derived summaries
 - Status: `Promote now`
 - Why: `approved/` should mean human-reviewed canonical memory. Initial web-search summaries can be useful and well formed but should not acquire approved status without explicit human-in-the-loop promotion.
-- Evidence: live project setup revealed that candidate literature found during initialisation could be placed into an approved source index before review.
+- Evidence: live project setup revealed that candidate literature found during initialisation could be placed into an approved source index before review. This is now covered in shared procedures, the literature-search protocol, the source-note template, and the synthesis-agent prompt.
 
 ### 2026-04-28: source triage checks user authorship and collaborator connection
 - Status: `Promote now`
@@ -116,6 +116,42 @@ Use this file as the running shortlist of framework improvements that may be pro
 - Status: `Promote now`
 - Why: literature reviews, commentary drafts, grants, and policy notes need internal citation keys against factual claims to prevent unsupported assertions and hallucinated references.
 - Evidence: live drafting workflows required cited working drafts and confirmed source maps; the rule is now recorded in shared procedures and the literature-search protocol.
+
+### 2026-05-07: PubMed literature search workflow
+- Status: `Promote now`
+- Why: this is the first source-specific cloud literature retrieval workflow and fixes the earlier failure mode where a prompt-only agent treated a search strategy as if it had executed a search.
+- Evidence: `scripts/run-pubmed-literature-search.ps1`, `.github/workflows/pubmed-literature-search.yml`, and `workspace/_templates/pubmed_search_protocol.md` now support protocol-driven PubMed retrieval, working search-results notes, PR return, and optional Synthesis Agent handoff. The `roboscot` project has a PubMed protocol/results pattern that demonstrates the intended handoff shape.
+- Promotion note: the core export includes the PubMed template, procedure updates, workflow YAML, and runner script, so this is promotable as a runnable first-pass literature-search agent.
+- Scope: PubMed only for the first implementation. Broader source support should be added source by source after this has run successfully.
+
+### 2026-05-07: GitHub Actions preflight rule
+- Status: `Promote now`
+- Why: cloud agents fail in confusing ways when workflow YAML, runner scripts, templates, or project input files exist only in the local working tree.
+- Evidence: live GitHub Actions work exposed that the cloud runner only sees committed and pushed repository state. The rule is now recorded in `shared-procedures.md`, `tier2-agentic.md`, and `literature-search-protocol.md`.
+- Scope: applies to all GitHub Actions-backed Tier 2 processes, including PubMed search, context scout, and synthesis handoff workflows.
+
+### 2026-05-07: approved outputs folder convention
+- Status: `Promote now`
+- Why: `framing/` is for project positioning and argument scaffolding, not every completed deliverable. Final or agreed documents need a first-class approved home.
+- Evidence: the repo now uses a four-folder approved structure: `framing/`, `sources/`, `syntheses/`, and `outputs/`; templates, session initialisation, shared procedures, registry guidance, and live project folders have been updated.
+- Scope: applies to new projects and to existing projects as they migrate final grants, manuscripts, cover letters, policy briefs, reviewer packs, and circulation-ready documents.
+
+### 2026-05-07: reviewer-pack workflow as a reusable project pattern
+- Status: `Keep private`
+- Why: the `nejm_ai_reviewers` project shows a useful repeatable shape for case-based reviewer identification: request pack template, working pack per case, explicit conflict/caution notes, email verification, and promotion of agreed packs to outputs.
+- Evidence: multiple working reviewer packs now use the same structure and the project has a dedicated template.
+- Scope: specific to Ewen's editorial workflow and should not be promoted to the public core repo.
+
+## Full Repo Scan Summary, 2026-05-07
+
+Fresh comparison of the private repo against `C:\Users\ewenh\Documents\agentic_workspace_core` found these promotion options:
+
+1. Promote the four-folder approved structure now: update README, templates, registry, session-init, shared procedures, and the sample project with `approved/outputs/`.
+2. Promote the approval-boundary hardening now: keep first-pass search/source notes in `working/` or `auto/` until explicitly approved; this touches shared procedures, source-note template, synthesis prompt, and literature-search protocol.
+3. Promote the GitHub Actions preflight rule now: require commit/push of workflow dependencies before dispatch.
+4. Promote the PubMed workflow now as a runnable first-pass cloud literature-search agent, including the PubMed workflow YAML, runner script, protocol template, and documentation.
+5. Keep the reviewer-pack project pattern private because it is specific to Ewen's editorial workflow.
+6. Keep private project content private: live project sources, grant/manuscript outputs, reviewer candidates, email/note destination details, and collaborator-specific material should not be copied into public core.
 
 ## How To Use This File
 

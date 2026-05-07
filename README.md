@@ -41,6 +41,7 @@ profile/
     framing/
     sources/
     syntheses/
+    outputs/
   auto/
     source-index.md
   logs/
@@ -134,6 +135,7 @@ New projects should organise approved material as:
 - `approved/framing/` for approved framing or concept notes
 - `approved/sources/` for approved source notes
 - `approved/syntheses/` for approved synthesis notes
+- `approved/outputs/` for completed or agreed deliverables such as final grants, manuscripts, cover letters, policy briefs, reviewer packs, and circulation-ready documents
 - `approved/source-index.md` only as a backward-compatibility redirect
 
 `approved/` means human-reviewed canonical memory. Raw user-provided files can live in `sources/`, but an agent summary of them is not approved until reviewed or explicitly requested as an approved note.

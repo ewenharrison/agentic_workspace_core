@@ -26,8 +26,10 @@ If a procedure changes, update it here first and then only add project-specific 
 - `memory.md` is the primary quick-start briefing for every project.
 - `project.md` is for slower-changing structure, goals, decisions, and governance.
 - `approved/` is canonical.
-- New projects should organise `approved/` into `framing/`, `sources/`, and `syntheses/`, with `approved/index.md` as the canonical navigation file. Keep `approved/source-index.md` only as a backward-compatibility redirect where needed.
+- New projects should organise `approved/` into `framing/`, `sources/`, `syntheses/`, and `outputs/`, with `approved/index.md` as the canonical navigation file. Keep `approved/source-index.md` only as a backward-compatibility redirect where needed.
+- Use `approved/framing/` for positioning, rationale, argument structure, concept framing, and other durable scaffolding. Use `approved/outputs/` for completed or agreed deliverables such as final grant applications, manuscripts, submitted cover letters, policy briefs, reviewer packs, and circulation-ready documents.
 - Nothing should be written into `approved/` merely because it was found during an initial web or literature search. First-pass search summaries, source notes, and candidate bibliographies belong in `working/` for human review or in `auto/` if generated autonomously.
+- New literature or source summaries default to `working/`, even if they are well structured, cited, or written using the source-note template.
 - Promote material into `approved/` only after explicit human-in-the-loop approval, or when the user explicitly asks to create an approved note. If a source itself is user-provided or captured for preservation, store the raw file or snapshot in `sources/`; do not treat an agent summary of it as approved until reviewed.
 - When a draft or working note is promoted to `approved/`, remove the duplicate copy from `working/` and update links to the approved version, unless the user explicitly asks to preserve a draft history there.
 - After any promotion to `approved/`, run a link/path check for the promoted filename or title, update project indexes and memory to the approved path, and verify there is no same-purpose stale copy left in `working/`. This check is mandatory before reporting completion.
@@ -66,6 +68,13 @@ If a procedure changes, update it here first and then only add project-specific 
 - Record cloud and local agent runs in `workspace/runs/agent-runs.md`.
 - Include the input file or prompt, output PR or note, status, dependencies, and final decision.
 - Do not rely on GitHub PR lists alone as the project-control surface.
+
+## GitHub Actions Preflight Rule
+
+- Before dispatching any GitHub Actions workflow, confirm that every file required by the workflow exists on the remote branch the workflow will run from.
+- If the workflow depends on newly created or modified files, commit and push those files before running `gh workflow run` or using the GitHub Actions UI. This includes workflow YAML, scripts, templates, project input files, search protocols, and repo procedure files.
+- Do not assume local uncommitted files are visible to GitHub Actions. GitHub Actions runs from the repository state on GitHub, not the local working tree.
+- When a workflow fails because a required workflow/script/input was only local, fix the procedure file if needed, commit and push the dependency, then restart the workflow from the pushed commit.
 
 ## Pull Sync Rule
 

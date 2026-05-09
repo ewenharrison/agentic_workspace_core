@@ -24,7 +24,9 @@ If a procedure changes, update it here first and then only add project-specific 
 
 - `profile/context.md` is the primary quick-start file for durable personal context when the `profile/` layer is in use.
 - `memory.md` is the primary quick-start briefing for every project.
+- `memory.md` is a living project dashboard, not a route for unreviewed agent conclusions to become trusted content. It may record operational state, completed actions, publication status, links, open loops, and pointers to source files or notes. It should not introduce new substantive claims, interpretations, literature conclusions, or recommendations unless they are already supported by Tier 1 approved material or explicitly approved by the user.
 - `project.md` is for slower-changing structure, goals, decisions, and governance.
+- `working/` is Tier 1 pre-approved space: human-in-the-loop, useful for drafts and provisional notes, but not canonical.
 - `approved/` is canonical.
 - New projects should organise `approved/` into `framing/`, `sources/`, `syntheses/`, and `outputs/`, with `approved/index.md` as the canonical navigation file. Keep `approved/source-index.md` only as a backward-compatibility redirect where needed.
 - Use `approved/framing/` for positioning, rationale, argument structure, concept framing, and other durable scaffolding. Use `approved/outputs/` for completed or agreed deliverables such as final grant applications, manuscripts, submitted cover letters, policy briefs, reviewer packs, and circulation-ready documents.
@@ -33,12 +35,13 @@ If a procedure changes, update it here first and then only add project-specific 
 - Promote material into `approved/` only after explicit human-in-the-loop approval, or when the user explicitly asks to create an approved note. If a source itself is user-provided or captured for preservation, store the raw file or snapshot in `sources/`; do not treat an agent summary of it as approved until reviewed.
 - When a draft or working note is promoted to `approved/`, remove the duplicate copy from `working/` and update links to the approved version, unless the user explicitly asks to preserve a draft history there.
 - After any promotion to `approved/`, run a link/path check for the promoted filename or title, update project indexes and memory to the approved path, and verify there is no same-purpose stale copy left in `working/`. This check is mandatory before reporting completion.
-- `auto/` is provisional unless promoted.
+- `auto/` is the Tier 2 autonomous lane and is provisional unless promoted. Some projects will have little or no active Tier 2 material.
+- Output documents, public copy, manuscripts, grant text, policy notes, and other substantive deliverables should be drafted from Tier 1 approved content by default. Material from `working/`, `auto/`, web search, or model inference can inform suggestions, but it must not be treated as a source for final output unless it has been reviewed and promoted, or the user explicitly authorises its use.
 
 ## Tier 2 Rule
 
 - If Tier 2 is enabled proactively, record its permission and limits in `auto/autonomous-lane-policy.md`.
-- Tier 2 may support `memory.md`, but its outputs must remain clearly provisional until reviewed or promoted.
+- Tier 2 may support `memory.md` only with clearly bounded operational updates and links to provisional material. Tier 2 must not add unreviewed substantive claims to `memory.md` as if they were project knowledge. Its outputs must remain clearly provisional until reviewed or promoted.
 
 ## Search, Scout, And Synthesis Rule
 

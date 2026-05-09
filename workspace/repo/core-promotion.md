@@ -75,6 +75,7 @@ Examples:
 The export script currently treats these as core material:
 
 - `README.md`
+- `STRUCTURE.md`
 - `workspace/_templates/`
 - `workspace/repo/`
 - `workspace/workflows/`

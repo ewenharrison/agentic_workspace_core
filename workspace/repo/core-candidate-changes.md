@@ -10,6 +10,12 @@ Use this file as the running shortlist of framework improvements that may be pro
 
 ## Current Candidates
 
+### 2026-05-09: explicit workspace structure map and tier-folder legend
+- Status: `Promote now`
+- Why: first-time readers can miss that `working/` is still Tier 1 and that `approved/` is a reviewed subset of Tier 1, while `auto/` is the separate Tier 2 lane.
+- Evidence: presentation preparation surfaced ambiguity in the folder naming and the limited current use of `auto/`; the repo now has a top-level `STRUCTURE.md`, README short version, registry legend, and shared-procedure wording.
+- Scope: documentation and export only. Keep the existing folder names rather than renaming to `tier1_working`, `tier1_approved`, and `tier2_auto`, because the shorter names are easier to use once the structure map is explicit.
+
 ### 2026-05-01: approved index folder convention
 - Status: `Promote now`
 - Why: approved material becomes hard to navigate when internal framing, source notes, and syntheses sit together in one flat folder.
@@ -135,6 +141,12 @@ Use this file as the running shortlist of framework improvements that may be pro
 - Why: `framing/` is for project positioning and argument scaffolding, not every completed deliverable. Final or agreed documents need a first-class approved home.
 - Evidence: the repo now uses a four-folder approved structure: `framing/`, `sources/`, `syntheses/`, and `outputs/`; templates, session initialisation, shared procedures, registry guidance, and live project folders have been updated.
 - Scope: applies to new projects and to existing projects as they migrate final grants, manuscripts, cover letters, policy briefs, reviewer packs, and circulation-ready documents.
+
+### 2026-05-07: `memory.md` dashboard boundary and Tier 1 output rule
+- Status: `Promote now`
+- Why: `memory.md` is useful as a living project dashboard, but it must not become a route for unreviewed agent conclusions to enter trusted project memory. Final outputs need a clear default rule that they are drafted from Tier 1 approved content.
+- Evidence: live project work around a published Conversation article exposed the need to distinguish operational memory updates from substantive claims. The rule is now recorded in shared procedures, Tier 1 and Tier 2 workflows, the memory template, and the project guardrails.
+- Scope: applies repo-wide. `memory.md` may track operational state, links, open loops, completed actions, and claims already supported by Tier 1 approved material. New substantive claims, interpretations, literature conclusions, or recommendations require review/promotion or explicit user approval before being treated as settled project knowledge or used in final output documents.
 
 ### 2026-05-07: reviewer-pack workflow as a reusable project pattern
 - Status: `Keep private`

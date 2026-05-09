@@ -24,7 +24,21 @@ The design centres on three ideas:
 - `approved/` and `auto/` stay separate so reviewed knowledge and exploratory agent output do not get mixed together
 - `approved/index.md` is the navigation surface for reviewed material
 
+For a quick visual map of the folder structure, see [STRUCTURE.md](./STRUCTURE.md).
+
 ## Folder Layout
+
+Short version:
+
+```text
+sources -> working -> approved
+ raw       Tier 1      Tier 1
+ inputs    draft       trusted
+
+auto = Tier 2 provisional side lane
+```
+
+The subtle but important point is that `working/` is part of Tier 1. It is the pre-approved, human-in-the-loop workspace. `approved/` is also Tier 1, but after explicit approval. `auto/` is the Tier 2 autonomous lane and is provisional until reviewed.
 
 ```text
 profile/
@@ -144,6 +158,8 @@ New projects should organise approved material as:
 
 The exploratory lane.
 Use it for agent-generated summaries, rough synthesis, and provisional material that has not yet been promoted.
+
+Many projects will have little or no active Tier 2 material. A sparse `auto/` folder is expected when the project is being run mostly through Tier 1.
 
 ## Recommended Workflow
 

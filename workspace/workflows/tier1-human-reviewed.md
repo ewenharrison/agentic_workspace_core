@@ -7,6 +7,7 @@ Use this workflow when new information should not become durable memory until yo
 - Raw source goes into `sources/`
 - Draft note goes into `working/`
 - Nothing is treated as canonical until promoted to `approved/`
+- Output documents should be created from Tier 1 approved content by default
 
 ## Agent Responsibilities
 
@@ -14,7 +15,7 @@ Use this workflow when new information should not become durable memory until yo
 2. Produce a draft source note.
 3. Separate summary from confidence-sensitive claims.
 4. Suggest tags, actions, and project links.
-5. Propose any updates needed in `memory.md`.
+5. Propose any updates needed in `memory.md`; substantive claims should only be added once reviewed or explicitly approved.
 6. Wait for review before updating approved memory.
 
 When updating `memory.md`, always link source entries to the local note or downloaded file.

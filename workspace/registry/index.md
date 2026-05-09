@@ -29,6 +29,14 @@ For each new project, create:
 - `workspace/projects/<project-slug>/sources/links/`
 - `workspace/projects/<project-slug>/working/`
 
+## Folder Meaning
+
+- `sources/`: raw input layer, such as PDFs, DOCX files, copied webpages, links, and snapshots.
+- `working/`: Tier 1 pre-approved workspace for human-in-the-loop drafts, active packets, candidate notes, and provisional outputs.
+- `approved/`: Tier 1 canonical layer for material the user has explicitly approved for durable reuse.
+- `auto/`: Tier 2 autonomous/provisional lane. Useful, but not trusted until reviewed or promoted.
+- `memory.md`, `project.md`, and `logs/`: project control plane, not evidence tiers.
+
 ## Standard Resume Flow
 
 1. Open `memory.md`.

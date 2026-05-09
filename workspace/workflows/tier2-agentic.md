@@ -6,9 +6,10 @@ Use this workflow when you want autonomous capture and organization.
 
 - Raw source goes into `sources/`
 - Agent writes notes into `auto/`
-- Agent may update `memory.md` with clearly bounded current-state changes
+- Agent may update `memory.md` only with clearly bounded operational current-state changes, links, open loops, and status updates
 - Agent may maintain indexes and activity logs automatically
 - Approved memory remains untouched unless you explicitly ask for promotion
+- Agent must not place unreviewed substantive claims, interpretations, literature conclusions, or recommendations into `memory.md` as if they were trusted project knowledge
 
 ## Agent Responsibilities
 
@@ -16,7 +17,7 @@ Use this workflow when you want autonomous capture and organization.
 2. Generate a structured source note.
 3. Add tags, cross-links, and related project references where helpful.
 4. Update `auto/source-index.md`.
-5. Update `memory.md` when the project snapshot has meaningfully changed.
+5. Update `memory.md` when the project snapshot has meaningfully changed, but only for operational state or for claims already supported by Tier 1 approved content.
 6. Log major actions in `logs/activity.md`.
 
 When updating `memory.md`, always link source entries to the local note or downloaded file.
@@ -28,7 +29,7 @@ When updating `memory.md`, always link source entries to the local note or downl
 
 ## Promotion Rule
 
-Autonomous memory is useful working memory, but it should not be treated as trusted canonical memory until you promote it.
+Autonomous memory is useful working memory, but it should not be treated as trusted canonical memory until you promote it. Output documents should be created from Tier 1 approved content by default; `auto/` material can only be used in final deliverables after review/promotion or explicit user approval.
 
 ## Agent Mode Rule
 

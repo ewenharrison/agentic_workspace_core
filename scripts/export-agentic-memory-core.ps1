@@ -13,6 +13,7 @@ $destinationPath = if ([System.IO.Path]::IsPathRooted($Destination)) {
 
 $includePaths = @(
     "README.core.md",
+    "STRUCTURE.md",
     "PUBLISHING.core.md",
     "profile.core",
     "config\slack-webhooks.json.example",

@@ -1,5 +1,7 @@
 # Project Memory Snapshot
 
+Use this as a living project dashboard, not as a route for unreviewed agent conclusions to become trusted content. Record operational state, links, decisions, open loops, and claims already supported by Tier 1 approved material. Do not add new substantive claims, interpretations, literature conclusions, or recommendations unless reviewed or explicitly approved.
+
 ## Current Snapshot
 3 to 6 lines on where the project stands right now.
 
@@ -35,5 +37,7 @@ One sentence on the immediate aim.
 ## Guardrails
 - What should be treated as settled
 - What should still be treated as provisional
+- Final output documents should be drafted from Tier 1 approved content by default.
+- `working/` and `auto/` material can inform suggestions, but should not be used as final-output source material unless reviewed/promoted or explicitly approved.
 - If Teams sharing is used, default to the adaptive-card webhook workflow rather than plain text.
 - Always link every source entry to the local note or downloaded file so the project can be navigated directly from `memory.md`.

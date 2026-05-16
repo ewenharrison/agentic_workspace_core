@@ -7,7 +7,6 @@ This is the main navigation map for approved Tier 1 material in `<project-slug>`
 - Start here when you want the approved view of the project.
 - Read [memory.md](../memory.md) first for current project state.
 - Use the sections below to distinguish framing, source notes, synthesis, and completed outputs.
-- Keep [source-index.md](./source-index.md) only as a backward-compatibility redirect.
 
 ## Core Framing
 

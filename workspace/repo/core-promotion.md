@@ -123,8 +123,8 @@ Use this checklist when promoting the personal-context layer into `agentic_works
   - `profile/writing_style.md`
   - `profile/relationships.md`
   - `profile/active_notes.md`
-  - `profile/approved/source-index.md`
-  - `profile/auto/source-index.md`
+  - `profile/approved/index.md`
+  - `profile/auto/index.md`
   - `profile/logs/activity.md`
   - `profile/sources/files/.gitkeep`
   - `profile/sources/links/.gitkeep`

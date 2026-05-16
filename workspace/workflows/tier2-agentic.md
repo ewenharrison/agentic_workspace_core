@@ -16,7 +16,7 @@ Use this workflow when you want autonomous capture and organization.
 1. Record source metadata.
 2. Generate a structured source note.
 3. Add tags, cross-links, and related project references where helpful.
-4. Update `auto/source-index.md`.
+4. Update `auto/index.md`.
 5. Update `memory.md` when the project snapshot has meaningfully changed, but only for operational state or for claims already supported by Tier 1 approved content.
 6. Log major actions in `logs/activity.md`.
 

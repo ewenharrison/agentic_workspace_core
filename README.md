@@ -51,13 +51,12 @@ profile/
   active_notes.md
   approved/
     index.md
-    source-index.md
     framing/
     sources/
     syntheses/
     outputs/
   auto/
-    source-index.md
+    index.md
   logs/
     activity.md
   sources/
@@ -150,7 +149,6 @@ New projects should organise approved material as:
 - `approved/sources/` for approved source notes
 - `approved/syntheses/` for approved synthesis notes
 - `approved/outputs/` for completed or agreed deliverables such as final grants, manuscripts, cover letters, policy briefs, reviewer packs, and circulation-ready documents
-- `approved/source-index.md` only as a backward-compatibility redirect
 
 `approved/` means human-reviewed canonical memory. Raw user-provided files can live in `sources/`, but an agent summary of them is not approved until reviewed or explicitly requested as an approved note.
 
@@ -224,8 +222,8 @@ The standard read order is:
 3. task-relevant repo procedures, such as `workspace/repo/literature-search-protocol.md` for literature, web, journal, or URL access work
 4. `memory.md`
 5. `project.md`
-6. `approved/index.md`, falling back to `approved/source-index.md` for older projects
-7. `auto/source-index.md`
+6. `approved/index.md`
+7. `auto/index.md`
 8. `logs/activity.md`
 
 ## Collaboration Updates

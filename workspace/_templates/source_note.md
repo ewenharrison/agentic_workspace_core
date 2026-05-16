@@ -2,6 +2,8 @@
 
 Default location: save new literature/source summaries in `working/` unless the user explicitly asks to create an approved note or explicitly approves promotion. A polished source note is still provisional until reviewed.
 
+For user-provided primary material such as pasted emails, expert feedback, meeting notes, documents, or other source text, preserve the raw text/snapshot in `sources/` before writing this summary. Link the summary back to that raw source.
+
 ## Metadata
 - Title:
 - Authors:

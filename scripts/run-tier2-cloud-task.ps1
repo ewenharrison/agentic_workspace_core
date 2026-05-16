@@ -388,14 +388,11 @@ if (-not (Test-Path -LiteralPath $projectRoot)) {
 
 $autoDir = Join-Path $projectRoot "auto"
 $logsPath = Join-Path $projectRoot "logs\activity.md"
-$sourceIndexPath = Join-Path $autoDir "source-index.md"
+$sourceIndexPath = Join-Path $autoDir "index.md"
 $lanePolicyPath = Resolve-LanePolicyPath -AutoDirectory $autoDir
 $memoryPath = Join-Path $projectRoot "memory.md"
 $projectPath = Join-Path $projectRoot "project.md"
 $approvedIndexPath = Join-Path $projectRoot "approved\index.md"
-if (-not (Test-Path -LiteralPath $approvedIndexPath)) {
-    $approvedIndexPath = Join-Path $projectRoot "approved\source-index.md"
-}
 
 if ([string]::IsNullOrWhiteSpace($lanePolicyPath) -or -not (Test-Path -LiteralPath $lanePolicyPath)) {
     throw "Tier 2 lane policy missing for '$Project'. Expected an autonomous-lane-policy note in '$autoDir'."
@@ -406,7 +403,7 @@ $dateStamp = Get-Date -Format "yyyy-MM-dd"
 $latestAutoNotes = Get-ChildItem -LiteralPath $autoDir -Filter *.md |
     Where-Object {
         $_.FullName -ne $lanePolicyPath -and
-        $_.Name -ne "source-index.md" -and
+        $_.Name -ne "index.md" -and
         $_.Name -notlike "*cloud-maintenance-run.md"
     } |
     Sort-Object LastWriteTime -Descending |
@@ -451,7 +448,7 @@ if ($SkipModelCall) {
                 "memory.md",
                 "project.md",
                 "approved/index.md",
-                "auto/source-index.md",
+                "auto/index.md",
                 "logs/activity.md"
             )
             guardrails = @(

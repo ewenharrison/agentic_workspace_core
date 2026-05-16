@@ -16,7 +16,7 @@ If a procedure changes, update it here first and then only add project-specific 
 - Use `Initialise personal context` to load only the personal-context layer.
 - Use `Initialise project <project-slug>` to restart a project cleanly in a new session.
 - Load this shared-procedures file during project initialisation before acting on project tasks.
-- Load task-relevant repo procedure files during initialisation rather than discovering them only after a failure. For literature, web, journal, or URL access work, load [literature-search-protocol.md](literature-search-protocol.md). For Word export, load [word-export.md](word-export.md).
+- Load task-relevant repo procedure files during initialisation rather than discovering them only after a failure. For literature, web, journal, or URL access work, load [literature-search-protocol.md](literature-search-protocol.md). For Word export, load [word-export.md](word-export.md). For common operational actions, load and use [preflight-checklists.md](preflight-checklists.md).
 - Follow the read order defined in [session-init.md](./session-init.md).
 - Return a short rehydration summary covering objective, carried-forward claims, open loops, next actions, guardrails, and repo-level procedure files loaded.
 
@@ -28,11 +28,12 @@ If a procedure changes, update it here first and then only add project-specific 
 - `project.md` is for slower-changing structure, goals, decisions, and governance.
 - `working/` is Tier 1 pre-approved space: human-in-the-loop, useful for drafts and provisional notes, but not canonical.
 - `approved/` is canonical.
-- New projects should organise `approved/` into `framing/`, `sources/`, `syntheses/`, and `outputs/`, with `approved/index.md` as the canonical navigation file. Keep `approved/source-index.md` only as a backward-compatibility redirect where needed.
+- New projects should organise `approved/` into `framing/`, `sources/`, `syntheses/`, and `outputs/`, with `approved/index.md` as the canonical navigation file.
 - Use `approved/framing/` for positioning, rationale, argument structure, concept framing, and other durable scaffolding. Use `approved/outputs/` for completed or agreed deliverables such as final grant applications, manuscripts, submitted cover letters, policy briefs, reviewer packs, and circulation-ready documents.
 - Nothing should be written into `approved/` merely because it was found during an initial web or literature search. First-pass search summaries, source notes, and candidate bibliographies belong in `working/` for human review or in `auto/` if generated autonomously.
 - New literature or source summaries default to `working/`, even if they are well structured, cited, or written using the source-note template.
 - Promote material into `approved/` only after explicit human-in-the-loop approval, or when the user explicitly asks to create an approved note. If a source itself is user-provided or captured for preservation, store the raw file or snapshot in `sources/`; do not treat an agent summary of it as approved until reviewed.
+- When the user provides substantive email text, expert feedback, meeting notes, pasted documents, or other primary material, first preserve the raw text in `sources/` before creating a structured summary, synthesis, or project-memory interpretation. The summary should link back to the raw source.
 - When a draft or working note is promoted to `approved/`, remove the duplicate copy from `working/` and update links to the approved version, unless the user explicitly asks to preserve a draft history there.
 - After any promotion to `approved/`, run a link/path check for the promoted filename or title, update project indexes and memory to the approved path, and verify there is no same-purpose stale copy left in `working/`. This check is mandatory before reporting completion.
 - `auto/` is the Tier 2 autonomous lane and is provisional unless promoted. Some projects will have little or no active Tier 2 material.
@@ -42,6 +43,12 @@ If a procedure changes, update it here first and then only add project-specific 
 
 - If Tier 2 is enabled proactively, record its permission and limits in `auto/autonomous-lane-policy.md`.
 - Tier 2 may support `memory.md` only with clearly bounded operational updates and links to provisional material. Tier 2 must not add unreviewed substantive claims to `memory.md` as if they were project knowledge. Its outputs must remain clearly provisional until reviewed or promoted.
+
+## Preflight Checklist Rule
+
+- Before substantive actions, use the relevant checklist in [preflight-checklists.md](preflight-checklists.md).
+- In the working update to the user, briefly name the checklist being used, for example: "Preflight: user-provided source text - raw source first, synthesis second."
+- The checklist is not optional when the action involves user-provided primary material, literature/web evidence, promotion to `approved/`, Word export, or commit/push.
 
 ## Search, Scout, And Synthesis Rule
 
@@ -106,6 +113,12 @@ If a procedure changes, update it here first and then only add project-specific 
 - When asked to save, export, render, or convert Markdown to Word, use [word-export.md](word-export.md).
 - Default to Pandoc via `scripts/export-markdown-to-word.ps1`.
 - Avoid Word COM automation unless the user explicitly asks for it.
+
+## PDF OCR Rule
+
+- When a PDF has no usable text layer, use [pdf-ocr.md](pdf-ocr.md).
+- Preferred repo-wide OCR engine: `OCRmyPDF`, backed by Tesseract OCR, producing both a searchable `.ocr.pdf` and a `.ocr.txt` sidecar.
+- Avoid Word COM automation for PDF OCR or extraction; it is not a reliable repo-wide path.
 
 ## Writing Convention
 

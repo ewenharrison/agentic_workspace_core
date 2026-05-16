@@ -19,8 +19,8 @@ Shared procedure details live in [../memories/repo/shared-procedures.md](../memo
 4. [writing_style.md](./writing_style.md)
 5. [relationships.md](./relationships.md)
 6. [active_notes.md](./active_notes.md)
-7. [approved/source-index.md](./approved/source-index.md)
-8. [auto/source-index.md](./auto/source-index.md)
+7. [approved/index.md](./approved/index.md)
+8. [auto/index.md](./auto/index.md)
 9. [logs/activity.md](./logs/activity.md)
 
 ## Expected Rehydration Summary

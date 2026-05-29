@@ -74,7 +74,7 @@ $temporaryOutput = Join-Path $env:TEMP ("markdown-word-export-" + [guid]::NewGui
 
 $pandocArgs = @(
     $inputItem.FullName,
-    "--from", "gfm",
+    "--from", "gfm+attributes",
     "--to", "docx",
     "--output", $temporaryOutput
 )

@@ -34,6 +34,7 @@ Never promote these into `agentic_workspace_core`:
 - specific live project content
 - generated Tier 2 notes from live runs
 - the live `profile/` content from this private repo
+- local icon, image, or asset-library indexes, search scripts, paid-asset metadata, and absolute local asset paths
 
 ## Working Rhythm
 

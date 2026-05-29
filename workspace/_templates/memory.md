@@ -18,9 +18,9 @@ One sentence on the immediate aim.
 - `[Q2]` Open question 2
 
 ## Active Sources
-- `[S1]` [Source title](./approved/sources/example-source-note.md): why it matters
-- `[S2]` [Framing title](./approved/framing/example-framing-note.md): why it matters
-- `[O1]` [Output title](./approved/outputs/example-output.md): final or agreed deliverable, if relevant
+- `[W1]` [Working source or draft title](./working/example-working-note.md): why it matters, awaiting review
+- `[S1]` [Approved source title](./approved/sources/example-source-note.md): why it matters, only after explicit human approval
+- `[O1]` [Approved output title](./approved/outputs/example-output.md): final or agreed deliverable, only after explicit human approval
 
 ## What Changed Recently
 - Most recent update
@@ -37,6 +37,7 @@ One sentence on the immediate aim.
 ## Guardrails
 - What should be treated as settled
 - What should still be treated as provisional
+- `approved/` is human-gated. Do not create or move files there without explicit human approval or an explicit instruction to promote a named draft.
 - Final output documents should be drafted from Tier 1 approved content by default.
 - `working/` and `auto/` material can inform suggestions, but should not be used as final-output source material unless reviewed/promoted or explicitly approved.
 - If Teams sharing is used, default to the adaptive-card webhook workflow rather than plain text.

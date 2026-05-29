@@ -30,3 +30,7 @@ When updating `memory.md`, always link source entries to the local note or downl
 ## Promotion Rule
 
 Only reviewed material should move from `working/` into `approved/`.
+
+## Execution Boundary
+
+If a Tier 1 task depends on local desktop applications, COM automation, GUI sessions, local credentialed clients, or other host-bound resources, state the execution boundary before running it. Access escalation for local collection does not relax approval, import, send, move, delete, archive, or state-update guardrails.

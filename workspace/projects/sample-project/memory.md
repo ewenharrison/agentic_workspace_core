@@ -15,7 +15,7 @@ Use this project as a model for creating real academic projects.
 - `[Q1]` Which additional lightweight conventions would make this repo easiest to maintain long term?
 
 ## Active Sources
-- None yet
+- None yet. Draft or unreviewed material belongs in `working/`; approved material belongs in `approved/framing/`, `approved/sources/`, `approved/syntheses/`, or `approved/outputs/`.
 
 ## What Changed Recently
 - The repo architecture was updated to standardize `memory.md` across projects.
@@ -30,3 +30,4 @@ Use this project as a model for creating real academic projects.
 ## Guardrails
 - Keep this file short and easy to scan.
 - Treat this as the default first file to open for project resumption.
+- `approved/` is human-gated. Agent-created notes, source summaries, syntheses, tasks, and outputs start in `working/` unless explicitly promoted.

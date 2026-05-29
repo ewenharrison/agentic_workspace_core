@@ -27,12 +27,16 @@ $includePaths = @(
     "workspace\projects\sample-project",
     ".github\workflows\pubmed-literature-search.yml",
     ".github\workflows\tier2-cloud-maintenance.core.yml",
+    "scripts\check-approved-boundary.ps1",
     "scripts\export-markdown-to-word.ps1",
     "scripts\post-slack-file.ps1",
     "scripts\post-slack-update.ps1",
     "scripts\post-teams-update.ps1",
+    "scripts\new-project.ps1",
+    "scripts\promote-to-approved.ps1",
     "scripts\run-pubmed-literature-search.ps1",
     "scripts\run-tier2-cloud-task.ps1",
+    "scripts\set-approved-write-lock.ps1",
     "scripts\export-agentic-memory-core.ps1"
 )
 
@@ -93,12 +97,23 @@ foreach ($note in $privateRepoNotes) {
 
 $privateOnlyRepoFiles = @(
     "email-procedure.md",
-    "evernote-email-procedure.md"
+    "evernote-email-procedure.md",
+    "icon-library.md"
 )
 foreach ($fileName in $privateOnlyRepoFiles) {
     $privateOnlyPath = Join-Path (Join-Path $destinationPath "workspace\repo") $fileName
     if (Test-Path -LiteralPath $privateOnlyPath) {
         Remove-Item -LiteralPath $privateOnlyPath -Force
+    }
+}
+
+$privateOnlyRepoDirectories = @(
+    "icon-indexes"
+)
+foreach ($directoryName in $privateOnlyRepoDirectories) {
+    $privateOnlyPath = Join-Path (Join-Path $destinationPath "workspace\repo") $directoryName
+    if (Test-Path -LiteralPath $privateOnlyPath) {
+        Remove-Item -LiteralPath $privateOnlyPath -Recurse -Force
     }
 }
 

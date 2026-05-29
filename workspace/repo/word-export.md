@@ -40,8 +40,18 @@ If Pandoc is installed somewhere else, pass the path explicitly:
 powershell -ExecutionPolicy Bypass -File .\scripts\export-markdown-to-word.ps1 -InputPath "path\to\file.md" -PandocPath "path\to\pandoc.exe"
 ```
 
+## Submission-Specific Formatting
+
+- If a funder, journal, university form or application guidance specifies mechanical formatting, check those rules after export. A project `word-reference.docx` may be visually attractive but still wrong for the form.
+- Apply the specified page size, margins, font, font size, line spacing, headers/footers and page-numbering rules before reporting completion.
+- If a project has a checked formatter for a specific form or submission route, export from Markdown first and then run that formatter, for example:
+
+```powershell
+powershell -ExecutionPolicy Bypass -File .\scripts\<project-specific-formatter>.ps1 -InputPath "workspace\projects\<project-slug>\working\<note>.docx"
+```
+
 ## Avoid
 
 - Do not use Word COM automation for routine Markdown-to-Word export.
-- Do not hand-build `.docx` Open XML packages.
+- Do not hand-build `.docx` Open XML packages outside a checked, documented formatter script for a specific form requirement.
 - Do not install another converter unless Pandoc is unavailable or explicitly unsuitable.

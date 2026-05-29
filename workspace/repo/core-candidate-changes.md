@@ -11,7 +11,7 @@ Use this file as the running shortlist of framework improvements that may be pro
 
 ## Active Candidates
 
-No active promotion candidates after the 2026-05-16 core refresh.
+No active candidates currently pending after the 2026-05-29 promotion pass.
 
 When adding a candidate, include:
 
@@ -53,10 +53,31 @@ When adding a candidate, include:
 
 ### Reviewer-pack workflow
 - Status: `Keep private`
-- Why: this is specific to Ewen's editorial workflow.
+- Why: this is specific to a local editorial workflow.
 - Evidence: the `nejm_ai_reviewers` project has a useful repeatable structure, but the public core should not carry that editorial pattern as a generic default.
 
+### Local icon or asset library indexes
+- Status: `Keep private`
+- Why: local icon, image, and asset-library indexes are environment-specific and may include absolute paths, licence-sensitive metadata, or paid asset references.
+- Evidence: useful locally, but explicitly out of scope for public core promotion.
+- Rule: never promote the local icon or asset library process, indexes, search scripts, or metadata into `agentic_workspace_core`.
+
 ## Promoted
+
+### 2026-05-29: explicit execution-boundary rules for local desktop automation
+- Status: `Promoted`
+- Why: Workflows may depend on local desktop applications, COM objects, GUI sessions, local credentialed clients, or other host-bound resources. These can fail inside the Codex sandbox even when the same read-only command succeeds with local host execution.
+- Promoted files/conventions: generic execution-boundary rule in shared procedures, preflight checklist coverage for host-bound automation, and execution-boundary sections in Tier 1 and Tier 2 workflow docs.
+
+### 2026-05-29: harden new-project approval boundary
+- Status: `Promoted`
+- Why: Project initiation needs a stronger guardrail so scaffolding does not place agent-authored notes, source summaries, syntheses, tasks, or outputs into `approved/` before human review.
+- Promoted files/conventions: `scripts/new-project.ps1`, `scripts/set-approved-write-lock.ps1`, `scripts/promote-to-approved.ps1`, `scripts/check-approved-boundary.ps1`, shared procedures, session-init, project templates, and `workspace/repo/agent-prompt-snippets.md`.
+
+### 2026-05-29: Word export attributes and submission-specific formatting rule
+- Status: `Promoted`
+- Why: Pandoc exports sometimes need Markdown attributes, and final submission documents may need mechanical formatting that overrides the repo or project reference document.
+- Promoted files/conventions: `scripts/export-markdown-to-word.ps1` now uses `gfm+attributes`; Word export procedures and preflight checklist require checking target submission formatting and using a project-specific checked formatter when needed.
 
 ### 2026-05-16: preflight checklists for common repo actions
 - Status: `Promoted`

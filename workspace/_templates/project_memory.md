@@ -37,7 +37,12 @@ Open `memory.md` first when resuming this project. Use this file for slower-chan
 Follow shared repo procedures unless this project explicitly documents an exception.
 
 ## Important Sources
-- Add links to approved framing, source notes, syntheses, and outputs here.
+- Add links to approved framing, source notes, syntheses, and outputs here only after explicit human approval.
+- Link draft or agent-created material to `working/` until reviewed and promoted.
+
+## Approval Boundary
+- `approved/` is human-gated. Agent-created source notes, syntheses, tasks, and outputs start in `working/` unless the user explicitly instructs creation in `approved/` or promotion of a named draft.
+- Raw source files may be preserved in `sources/`, but an agent summary of a raw source is not approved until reviewed.
 
 ## Risks Or Unknowns
 - Risk 1

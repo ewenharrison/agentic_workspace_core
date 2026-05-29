@@ -43,6 +43,10 @@ When a task requires PubMed retrieval, follow [literature-search-protocol.md](..
 
 Before dispatching any GitHub Actions-backed Tier 2 process, commit and push all required workflow, script, template, procedure, and project input files. The cloud runner only sees the repository state on GitHub, not local uncommitted changes.
 
+## Execution Boundary
+
+If a Tier 2 workflow depends on local desktop applications, COM automation, GUI sessions, local credentialed clients, or other host-bound resources, document whether it can run in the sandbox or must run outside it. Escalation for local access does not authorise additional mutations, imports, messages, file moves, deletions, or state updates.
+
 ## Possible Future Requirement
 
 Tier 2 may later need a stricter `LLM-as-judge` layer for relevance control, especially in literature-heavy projects.

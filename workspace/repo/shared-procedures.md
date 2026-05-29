@@ -27,7 +27,7 @@ If a procedure changes, update it here first and then only add project-specific 
 - `memory.md` is a living project dashboard, not a route for unreviewed agent conclusions to become trusted content. It may record operational state, completed actions, publication status, links, open loops, and pointers to source files or notes. It should not introduce new substantive claims, interpretations, literature conclusions, or recommendations unless they are already supported by Tier 1 approved material or explicitly approved by the user.
 - `project.md` is for slower-changing structure, goals, decisions, and governance.
 - `working/` is Tier 1 pre-approved space: human-in-the-loop, useful for drafts and provisional notes, but not canonical.
-- `approved/` is canonical.
+- `approved/` is canonical only for human-approved material.
 - New projects should organise `approved/` into `framing/`, `sources/`, `syntheses/`, and `outputs/`, with `approved/index.md` as the canonical navigation file.
 - Use `approved/framing/` for positioning, rationale, argument structure, concept framing, and other durable scaffolding. Use `approved/outputs/` for completed or agreed deliverables such as final grant applications, manuscripts, submitted cover letters, policy briefs, reviewer packs, and circulation-ready documents.
 - Nothing should be written into `approved/` merely because it was found during an initial web or literature search. First-pass search summaries, source notes, and candidate bibliographies belong in `working/` for human review or in `auto/` if generated autonomously.
@@ -39,6 +39,31 @@ If a procedure changes, update it here first and then only add project-specific 
 - `auto/` is the Tier 2 autonomous lane and is provisional unless promoted. Some projects will have little or no active Tier 2 material.
 - Output documents, public copy, manuscripts, grant text, policy notes, and other substantive deliverables should be drafted from Tier 1 approved content by default. Material from `working/`, `auto/`, web search, or model inference can inform suggestions, but it must not be treated as a source for final output unless it has been reviewed and promoted, or the user explicitly authorises its use.
 
+## New Project Initiation Rule
+
+- Creating a new project folder is a substantive repo action, not just a filesystem task.
+- Before scaffolding a project, load [preflight-checklists.md](preflight-checklists.md) and run the `New Project Initiation Or Scaffolding` checklist.
+- Use `scripts/new-project.ps1` for project scaffolding. Do not manually create a scaffold with `apply_patch`, `New-Item`, copied templates, or ad hoc shell writes unless the scaffold tool cannot be used.
+- Read the relevant templates before writing project files, but do not treat template examples as permission to populate `approved/`.
+- New projects should begin with agent-created notes, syntheses, tasks, and outputs in `working/`. `approved/index.md` may be created, but it should list no approved material unless the user has explicitly identified already-approved material or requested promotion.
+- When a user provides a primary source file during project initiation, preserve the raw file under `sources/`; any agent-authored summary of that source starts in `working/`.
+- After scaffolding, lock the project `approved/` folder with `scripts/set-approved-write-lock.ps1 -Mode Lock -Project <slug>`. If applying the ACL lock fails because elevated filesystem permissions are required, rerun that lock command with approval.
+
+## Approved Promotion Rule
+
+- Direct writes, moves, or patches into `workspace/projects/**/approved/` are forbidden except for maintaining `approved/index.md`.
+- To place a non-index file in `approved/`, use `scripts/promote-to-approved.ps1` after explicit human approval.
+- The promote script unlocks the target approved folder, moves the reviewed working file, and relocks the approved folder.
+- Manual fallback promotion is allowed only if the promote tool cannot be used, and must still include explicit approval, temporary unlock, relock, index update, memory update, and path checks.
+- Prompt-level wording for this invariant is stored in [agent-prompt-snippets.md](agent-prompt-snippets.md).
+
+## Approved Boundary Tool Rule
+
+- Use `scripts/check-approved-boundary.ps1` after new project scaffolding and before reporting completion when the work could have created or modified project `approved/` files. This is a backup verification, not the primary guard.
+- The checker uses `git status -uall` so nested files inside new untracked project folders are visible.
+- Do not pass `-AllowApprovedChanges` unless the user has explicitly approved promotion or requested an approved note.
+- If the checker fails without explicit approval, move the files back to `working/` and update project links before responding.
+
 ## Tier 2 Rule
 
 - If Tier 2 is enabled proactively, record its permission and limits in `auto/autonomous-lane-policy.md`.
@@ -48,7 +73,14 @@ If a procedure changes, update it here first and then only add project-specific 
 
 - Before substantive actions, use the relevant checklist in [preflight-checklists.md](preflight-checklists.md).
 - In the working update to the user, briefly name the checklist being used, for example: "Preflight: user-provided source text - raw source first, synthesis second."
-- The checklist is not optional when the action involves user-provided primary material, literature/web evidence, promotion to `approved/`, Word export, or commit/push.
+- The checklist is not optional when the action involves project initiation/scaffolding, user-provided primary material, literature/web evidence, promotion to `approved/`, Word export, or commit/push.
+
+## Execution Boundary Rule
+
+- Workflows that depend on local desktop applications, COM automation, GUI sessions, local credentialed clients, or other host-bound resources must document their execution boundary before use.
+- The workflow should say whether the command can run in the sandbox or must run outside it, why that boundary exists, what the command is allowed to do, and which mutation guardrails remain in force.
+- Escalating a command for local access does not grant permission to import, send, delete, move, archive, mark read/unread, or update state unless that action is separately authorised by the workflow and the user request.
+- Where practical, keep read-only collection separate from import, state updates, or other mutations so a failed access attempt does not blur safety boundaries.
 
 ## Search, Scout, And Synthesis Rule
 

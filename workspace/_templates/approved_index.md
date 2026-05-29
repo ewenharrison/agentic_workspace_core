@@ -2,6 +2,10 @@
 
 This is the main navigation map for approved Tier 1 material in `<project-slug>`.
 
+## Approval Rule
+
+`approved/` is human-gated. Agent-created source notes, syntheses, tasks, and outputs must start in `working/` unless the user explicitly instructs creation in `approved/` or promotion of a named draft.
+
 ## How To Use This File
 
 - Start here when you want the approved view of the project.
@@ -10,7 +14,7 @@ This is the main navigation map for approved Tier 1 material in `<project-slug>`
 
 ## Core Framing
 
-- `[S1]` Source title and why it matters
+- None yet
 
 ## Key Syntheses
 

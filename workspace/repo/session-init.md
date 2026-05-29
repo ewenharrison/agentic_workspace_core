@@ -49,7 +49,10 @@ This command means: "We are starting again. Reload the project context from the 
 - `profile/context.md` is the optional global pre-project briefing file.
 - `memory.md` remains the primary quick-start file.
 - `project.md` remains the slower-changing governance and structure file.
-- `approved/` is canonical. New projects should organise approved material as `approved/framing/`, `approved/sources/`, `approved/syntheses/`, and `approved/outputs/`, with `approved/index.md` as the live navigation file.
+- `approved/` is canonical only for human-approved material. New projects should organise approved material as `approved/framing/`, `approved/sources/`, `approved/syntheses/`, and `approved/outputs/`, with `approved/index.md` as the live navigation file, but agent-created material starts in `working/`.
+- For new project creation, load `workspace/repo/preflight-checklists.md` and run the `New Project Initiation Or Scaffolding` checklist before writing files. Use `scripts/new-project.ps1` rather than hand-written scaffolding.
+- For approved promotion, use `scripts/promote-to-approved.ps1` after explicit human approval rather than direct writes or moves into `approved/`.
+- Prompt-level reinforcement for this boundary lives in `workspace/repo/agent-prompt-snippets.md`.
 - `auto/` is provisional unless promoted.
 - Repo-level procedures are part of initialisation, not optional background context.
 - Prefer British English spelling in repo documentation and memory files where practical.

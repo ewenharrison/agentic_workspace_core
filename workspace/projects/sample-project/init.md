@@ -13,11 +13,18 @@ Shared procedure details live in [../../repo/shared-procedures.md](../../repo/sh
 
 ## Required Read Order
 
-1. [memory.md](./memory.md)
-2. [project.md](./project.md)
-3. [approved/index.md](./approved/index.md)
-4. [auto/index.md](./auto/index.md)
-5. [logs/activity.md](./logs/activity.md)
+1. [../../repo/shared-procedures.md](../../repo/shared-procedures.md)
+2. [../../repo/preflight-checklists.md](../../repo/preflight-checklists.md) when creating/scaffolding a project or before any substantive action covered by a checklist
+3. Task-relevant repo procedure files, such as [../../repo/literature-search-protocol.md](../../repo/literature-search-protocol.md) for external literature, web, journal, or URL access work
+4. [memory.md](./memory.md)
+5. [project.md](./project.md)
+6. [approved/index.md](./approved/index.md)
+7. [auto/index.md](./auto/index.md)
+8. [logs/activity.md](./logs/activity.md)
+
+## Project Creation Boundary
+
+When creating a new project, use `scripts/new-project.ps1` and run the `New Project Initiation Or Scaffolding` checklist first. Agent-created notes, syntheses, tasks, and outputs start in `working/`; `approved/` is human-gated and should be locked with `scripts/set-approved-write-lock.ps1`.
 
 ## Expected Rehydration Summary
 
@@ -28,6 +35,7 @@ The resume summary should state:
 - the main open loops
 - the next actions
 - the current guardrails
+- the repo-level procedure files loaded for the task
 
 ## Current Resume Intent
 

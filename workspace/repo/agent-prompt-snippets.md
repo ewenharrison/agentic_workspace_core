@@ -11,6 +11,7 @@ For new project creation or scaffolding:
 - Run the "New Project Initiation Or Scaffolding" preflight.
 - Use scripts/new-project.ps1 for the scaffold.
 - Agent-created notes, source summaries, syntheses, tasks, and outputs must start in working/.
+- Every non-placeholder file created in working/ must begin with an ISO date prefix: YYYY-MM-DD-.
 - approved/index.md may be created as an empty navigation file; do not place non-index files under approved/.
 - Lock the project's approved/ folder with scripts/set-approved-write-lock.ps1.
 
@@ -26,5 +27,17 @@ If a task would place material in approved/ without these conditions, put it in 
 ## Project Creation First Move
 
 ```text
-When the user asks to initiate/create/start a project in workspace/projects, do not hand-write the project scaffold. First call scripts/new-project.ps1 with the project slug, then add raw source files under sources/ and agent-authored drafts under working/.
+When the user asks to initiate/create/start a project in workspace/projects, do not hand-write the project scaffold. First call scripts/new-project.ps1 with the project slug, then add raw source files under sources/ and date-prefixed agent-authored drafts under working/.
+```
+
+## Signal Review Guard
+
+```text
+For repeated signal review, first load workspace/repo/signal-review-protocol.md. Collect only a bounded read-only scan packet, write a date-prefixed digest, validate it, and advance completed state only after validation succeeds. Do not send, post, edit, move, delete, archive, import raw signal content, or mutate external systems unless the user explicitly approves that separate action.
+```
+
+## Corpus Retrieval Guard
+
+```text
+For publication, website, document, dataset, or other corpus retrieval, first load workspace/repo/corpus-retrieval-protocol.md. Run an access smoke test before bulk retrieval, keep credentials and reusable sessions out of the repo, maintain a retrieval manifest, and treat extraction/coding as provisional working material until reviewed.
 ```

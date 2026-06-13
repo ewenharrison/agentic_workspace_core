@@ -11,6 +11,7 @@ Use whenever creating a new project folder, project memory files, source notes, 
 - [ ] If `scripts/new-project.ps1` cannot be used, read the relevant templates from `workspace/_templates/`, especially `init.md`, `project_memory.md`, `memory.md`, and `approved_index.md`, before writing files.
 - [ ] Preserve raw user-provided files or snapshots in `sources/`; do not treat an agent summary of them as approved.
 - [ ] Put all agent-created source notes, syntheses, interview tasks, and draft outputs in `working/` by default.
+- [ ] Date-prefix every non-placeholder file created in `working/` using `YYYY-MM-DD-<descriptive-slug>`.
 - [ ] Create only `approved/index.md` as empty or as a navigation file for already-approved material only.
 - [ ] Lock the project `approved/` folder with `scripts/set-approved-write-lock.ps1 -Mode Lock -Project <slug>` so direct non-promotion writes fail before landing.
 - [ ] In `memory.md` and `project.md`, label draft material as `working/` material, not as approved sources or outputs.
@@ -23,6 +24,7 @@ Use for pasted emails, expert feedback, meeting notes, copied document text, int
 
 - [ ] Save the raw text or snapshot in `sources/` before synthesis.
 - [ ] Create any structured summary or interpretation in `working/` unless the user explicitly requests approval.
+- [ ] Date-prefix the `working/` summary or interpretation filename using `YYYY-MM-DD-<descriptive-slug>`.
 - [ ] Link the summary back to the raw source.
 - [ ] Update `memory.md` with both the raw source and working-note links when the material changes project direction.
 - [ ] Do not promote the summary to `approved/` unless the user explicitly approves it.
@@ -43,11 +45,37 @@ Use when a workflow depends on local desktop applications, COM objects, GUI sess
 Use for literature reviews, web searches, source discovery, DOI/PubMed/Crossref checks, and evidence-gathering.
 
 - [ ] Load `workspace/repo/literature-search-protocol.md`.
-- [ ] Save the search strategy in `working/`.
-- [ ] Save first-pass search results or source notes in `working/` or `auto/`, not `approved/`.
+- [ ] Save the search strategy in `working/` with a `YYYY-MM-DD-` date prefix.
+- [ ] Save first-pass search results or source notes in `working/` or `auto/`, not `approved/`; date-prefix `working/` filenames.
 - [ ] Preserve raw PDFs, snapshots, URLs, or source files in `sources/` when they matter for future verification.
 - [ ] Use only confirmed citations in fact-bearing drafts.
 - [ ] Promote to `approved/` only after explicit user approval.
+
+## Signal Review
+
+Use for repeated review of incoming messages, feeds, alerts, calendars, dashboards, or other time-windowed streams.
+
+- [ ] Load `workspace/repo/signal-review-protocol.md`.
+- [ ] Confirm the workflow is read-only unless the user explicitly authorised a separate mutation.
+- [ ] Define the scan window, source stream, query/filter configuration, and maximum number of items.
+- [ ] Write temporary scan packets outside project evidence folders and keep them out of `approved/`.
+- [ ] Write a date-prefixed digest to `working/` or the workflow's designated working folder.
+- [ ] Include project-specific handoff prompts before any import, reply, external action, or project update.
+- [ ] Validate the digest before advancing completed scan state.
+- [ ] Do not import raw signal content into a project unless the user explicitly approves that import.
+
+## Corpus Retrieval
+
+Use for building a publication, website, document, dataset, or other multi-item corpus from external sources.
+
+- [ ] Load `workspace/repo/corpus-retrieval-protocol.md`.
+- [ ] Define the corpus scope, inclusion/exclusion rules, allowed sources, and reuse/copyright boundary.
+- [ ] Run an access smoke test before large-scale retrieval.
+- [ ] Keep passwords, tokens, reusable cookies, browser profiles, and credential files out of the repo.
+- [ ] Create a date-prefixed retrieval plan or access note in `working/`.
+- [ ] Create a manifest with URL/source, status, content type, byte size where available, retrieval date, local path, checksum where appropriate, and extraction status.
+- [ ] Use conservative batching and stop on rate limits, access challenges, non-target content, or unexpected response patterns.
+- [ ] Treat automated extraction and coding as provisional until reviewed.
 
 ## Concept Note Or Grant Text Update
 

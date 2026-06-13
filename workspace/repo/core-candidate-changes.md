@@ -39,10 +39,10 @@ When adding a candidate, include:
 - Why: potentially useful for literature-heavy projects, but not yet implemented or designed enough for a core feature.
 - Evidence: captured as a future requirement in the Tier 2 workflow.
 
-### Repo-wide email and note-capture procedures
+### Platform-specific signal collectors
 - Status: `Watch`
-- Why: email handling and note capture are useful across projects, but the implementation depends on session-level connector availability and private destination details.
-- Evidence: live use showed the workflow is valuable, but public promotion needs a connector-agnostic and destination-free version.
+- Why: the generic signal-review lifecycle has been promoted, but individual collectors still depend on local platforms, credentials, schedules, and destination details.
+- Evidence: live use showed the workflow is valuable, but public promotion should stay connector-agnostic unless a specific public connector is deliberately supported.
 
 ## Keep Private
 
@@ -54,7 +54,7 @@ When adding a candidate, include:
 ### Reviewer-pack workflow
 - Status: `Keep private`
 - Why: this is specific to a local editorial workflow.
-- Evidence: the `nejm_ai_reviewers` project has a useful repeatable structure, but the public core should not carry that editorial pattern as a generic default.
+- Evidence: a local reviewer-pack project has a useful repeatable structure, but the public core should not carry that editorial pattern as a generic default.
 
 ### Local icon or asset library indexes
 - Status: `Keep private`
@@ -63,6 +63,26 @@ When adding a candidate, include:
 - Rule: never promote the local icon or asset library process, indexes, search scripts, or metadata into `agentic_workspace_core`.
 
 ## Promoted
+
+### 2026-06-13: mandatory date-prefixed `working/` filenames
+- Status: `Promoted`
+- Why: dated working filenames make project chronology, duplicate detection, and later promotion review much easier.
+- Promoted files/conventions: shared procedures, preflight checklists, literature-search protocol, README, and agent prompt snippets now require non-placeholder files created in `working/` to begin with `YYYY-MM-DD-`.
+
+### 2026-06-13: generic signal-review lifecycle
+- Status: `Promoted`
+- Why: repeated review of incoming streams needs a reusable safety pattern: bounded read-only collection, temporary packet, digest, validation, state update only after success, and project handoff prompts.
+- Promoted files/conventions: `workspace/repo/signal-review-protocol.md`, `workspace/_templates/signal_review_digest.md`, shared procedures, preflight checklists, session-init, README, and agent prompt snippets.
+
+### 2026-06-13: generic corpus retrieval protocol
+- Status: `Promoted`
+- Why: multi-item retrieval from external sources needs explicit access smoke tests, credential boundaries, manifests, checksums, conservative batching, and extraction status before synthesis.
+- Promoted files/conventions: `workspace/repo/corpus-retrieval-protocol.md`, `workspace/_templates/corpus_retrieval_plan.md`, shared procedures, preflight checklists, session-init, README, and literature-search protocol cross-links.
+
+### 2026-06-13: publication corpus review schema
+- Status: `Promoted`
+- Why: article-level or publication-level reviews benefit from a reusable schema covering publication identity, source/access status, review classification, methods/evidence, technology or intervention fields, equity/safety/governance, and coding uncertainty.
+- Promoted files/conventions: `workspace/_templates/publication_corpus_review_schema.md` and the corpus retrieval protocol's schema handoff rule.
 
 ### 2026-05-29: explicit execution-boundary rules for local desktop automation
 - Status: `Promoted`

@@ -4,14 +4,16 @@ Use this protocol when a task requires real external literature retrieval.
 
 The current Tier 2 cloud runner does not search PubMed, Crossref, Semantic Scholar, journal websites, or the open web. It can only reason over supplied repo context. A search strategy file is therefore not enough: an executed search must produce a separate search-results file.
 
+For multi-item publication, website, document, dataset, or other corpus retrieval, also use [corpus-retrieval-protocol.md](corpus-retrieval-protocol.md). That protocol covers access smoke tests, credential boundaries, retrieval manifests, raw file storage, and extraction status.
+
 ## Required Separation
 
 Keep search planning and search execution separate.
 
-Recommended filenames:
+Required filenames:
 
-- `working/search-strategy-<topic>.md`
-- `working/search-results-<topic>.md`
+- `working/YYYY-MM-DD-search-strategy-<topic>.md`
+- `working/YYYY-MM-DD-search-results-<topic>.md`
 
 ## Search Strategy File
 
@@ -69,6 +71,7 @@ The results file should include:
 - verification status for each citation, including the route used to confirm it: journal page, DOI record, PubMed, Crossref, local PDF, official organisation page, or other named source
 
 Search-results files and first-pass source summaries should normally be saved in `working/`. They are evidence-gathering artefacts, not approved memory. Do not write search-derived summaries into `approved/` until the user has reviewed and explicitly approved them for promotion.
+All non-placeholder files created in `working/` must begin with `YYYY-MM-DD-`.
 
 ## Citation Use Rule
 
@@ -123,7 +126,7 @@ The Synthesis Agent should be asked to integrate a named results file, not merel
 Example:
 
 ```text
-Act as Synthesis Agent. Use workspace/projects/<project>/working/search-results-<topic>.md as the input evidence. Integrate the findings with memory.md, project.md, approved notes, and current open questions. Do not promote anything directly to approved memory.
+Act as Synthesis Agent. Use workspace/projects/<project>/working/YYYY-MM-DD-search-results-<topic>.md as the input evidence. Integrate the findings with memory.md, project.md, approved notes, and current open questions. Do not promote anything directly to approved memory.
 ```
 
 ## Capability Boundary

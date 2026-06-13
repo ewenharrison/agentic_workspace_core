@@ -121,8 +121,10 @@ Search strategies and executed search results should be stored as separate worki
 
 Example pattern:
 
-- `working/search-strategy-<topic>.md`
-- `working/search-results-<topic>.md`
+- `working/YYYY-MM-DD-search-strategy-<topic>.md`
+- `working/YYYY-MM-DD-search-results-<topic>.md`
+
+Every non-placeholder file created in `working/` should begin with `YYYY-MM-DD-`.
 
 ### `workspace/runs/agent-runs.md`
 
@@ -219,7 +221,7 @@ The standard read order is:
 
 1. `profile/context.md` if present
 2. `workspace/repo/shared-procedures.md`
-3. task-relevant repo procedures, such as `workspace/repo/literature-search-protocol.md` for literature, web, journal, or URL access work
+3. task-relevant repo procedures, such as `workspace/repo/literature-search-protocol.md` for literature, web, journal, or URL access work, `workspace/repo/signal-review-protocol.md` for repeated signal review, or `workspace/repo/corpus-retrieval-protocol.md` for corpus retrieval
 4. `memory.md`
 5. `project.md`
 6. `approved/index.md`
@@ -241,6 +243,8 @@ Store real webhook URLs outside git in `config/teams-webhook-url.txt`, `config/s
 For fact-bearing drafts, use confirmed sources only: local files, extracted PDFs, executed search-results notes, official pages, DOI/PubMed/Crossref records, or other checked records. If a claim lacks support, mark it as `[source needed]`, search, ask, or remove it.
 
 When triaging sources, note whether the user or a known collaborator appears connected to the source. That relationship can change interpretation, but uncertain name matches should stay marked as unclear.
+
+For repeated signal streams, use the signal-review protocol: collect a bounded read-only packet, write a date-prefixed digest, validate it, and advance completed state only after validation. For corpus retrieval, use the corpus-retrieval protocol: start with an access smoke test, keep credentials out of the repo, maintain a retrieval manifest, and treat automated extraction or coding as provisional until reviewed.
 
 To load only the personal-context layer, use:
 

@@ -16,7 +16,7 @@ If a procedure changes, update it here first and then only add project-specific 
 - Use `Initialise personal context` to load only the personal-context layer.
 - Use `Initialise project <project-slug>` to restart a project cleanly in a new session.
 - Load this shared-procedures file during project initialisation before acting on project tasks.
-- Load task-relevant repo procedure files during initialisation rather than discovering them only after a failure. For literature, web, journal, or URL access work, load [literature-search-protocol.md](literature-search-protocol.md). For Word export, load [word-export.md](word-export.md). For common operational actions, load and use [preflight-checklists.md](preflight-checklists.md).
+- Load task-relevant repo procedure files during initialisation rather than discovering them only after a failure. For literature, web, journal, or URL access work, load [literature-search-protocol.md](literature-search-protocol.md). For repeated signal review, load [signal-review-protocol.md](signal-review-protocol.md). For publication or site corpus retrieval, load [corpus-retrieval-protocol.md](corpus-retrieval-protocol.md). For Word export, load [word-export.md](word-export.md). For common operational actions, load and use [preflight-checklists.md](preflight-checklists.md).
 - Follow the read order defined in [session-init.md](./session-init.md).
 - Return a short rehydration summary covering objective, carried-forward claims, open loops, next actions, guardrails, and repo-level procedure files loaded.
 
@@ -27,6 +27,7 @@ If a procedure changes, update it here first and then only add project-specific 
 - `memory.md` is a living project dashboard, not a route for unreviewed agent conclusions to become trusted content. It may record operational state, completed actions, publication status, links, open loops, and pointers to source files or notes. It should not introduce new substantive claims, interpretations, literature conclusions, or recommendations unless they are already supported by Tier 1 approved material or explicitly approved by the user.
 - `project.md` is for slower-changing structure, goals, decisions, and governance.
 - `working/` is Tier 1 pre-approved space: human-in-the-loop, useful for drafts and provisional notes, but not canonical.
+- Working filename dating is mandatory: every non-placeholder file created in `working/` must begin with an ISO date prefix, `YYYY-MM-DD-`, followed by a short descriptive slug. This applies to agent-created notes, extracted text, search strategies, search results, syntheses, drafts, and task files. `.gitkeep` is exempt.
 - `approved/` is canonical only for human-approved material.
 - New projects should organise `approved/` into `framing/`, `sources/`, `syntheses/`, and `outputs/`, with `approved/index.md` as the canonical navigation file.
 - Use `approved/framing/` for positioning, rationale, argument structure, concept framing, and other durable scaffolding. Use `approved/outputs/` for completed or agreed deliverables such as final grant applications, manuscripts, submitted cover letters, policy briefs, reviewer packs, and circulation-ready documents.
@@ -46,6 +47,7 @@ If a procedure changes, update it here first and then only add project-specific 
 - Use `scripts/new-project.ps1` for project scaffolding. Do not manually create a scaffold with `apply_patch`, `New-Item`, copied templates, or ad hoc shell writes unless the scaffold tool cannot be used.
 - Read the relevant templates before writing project files, but do not treat template examples as permission to populate `approved/`.
 - New projects should begin with agent-created notes, syntheses, tasks, and outputs in `working/`. `approved/index.md` may be created, but it should list no approved material unless the user has explicitly identified already-approved material or requested promotion.
+- New project `working/` filenames must follow the mandatory date-prefix rule: `YYYY-MM-DD-<descriptive-slug>`.
 - When a user provides a primary source file during project initiation, preserve the raw file under `sources/`; any agent-authored summary of that source starts in `working/`.
 - After scaffolding, lock the project `approved/` folder with `scripts/set-approved-write-lock.ps1 -Mode Lock -Project <slug>`. If applying the ACL lock fails because elevated filesystem permissions are required, rerun that lock command with approval.
 
@@ -96,6 +98,20 @@ If a procedure changes, update it here first and then only add project-specific 
 - When a real search or `Context Scout` pass finds non-trivial new material, changed framing, or evidence that could alter project positioning, follow it with a `Synthesis Agent` pass.
 - Use the `Synthesis Agent` to integrate new findings with existing memory, novelty claims, open loops, and current project framing before deciding what becomes an approved note or a project-memory update.
 - Minor confirmatory search results do not always require a synthesis pass.
+
+## Signal Review Rule
+
+- Use [signal-review-protocol.md](signal-review-protocol.md) for repeated review of incoming signals such as messages, feeds, alerts, calendars, dashboards, or other time-windowed streams.
+- Signal review is read-only by default. It may collect bounded input packets, write project-facing digests, and suggest actions, but it must not send messages, post publicly, edit external systems, import raw source material, or update completed scan state unless those actions are separately authorised.
+- Keep temporary scan packets, pending state, completed state, logs, and digests separate. Completed state should advance only after a digest is written and validated.
+- Each project-specific recommendation should include a copyable handoff prompt that routes the user into the relevant project context before any import or action.
+
+## Corpus Retrieval Rule
+
+- Use [corpus-retrieval-protocol.md](corpus-retrieval-protocol.md) before building a publication, website, document, or other multi-item corpus from external sources.
+- Treat access setup, credential boundaries, retrieval manifests, checksums, and extraction status as part of the research method, not as incidental plumbing.
+- Do not store passwords, tokens, reusable cookies, browser profiles, or other credentials in the repo. Use local OS/user secret stores or an explicitly ignored location when credentialed access is necessary.
+- Large-scale retrieval should start with a smoke test, then a small stratified sample, then conservative batch retrieval with hard stops for rate limits, access challenges, non-target content, or unexpected responses.
 
 ## Citation Integrity Rule
 

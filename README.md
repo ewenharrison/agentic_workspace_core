@@ -27,13 +27,18 @@ Before creating projects, you can build the optional personal-context layer from
 - saved memories exported from ChatGPT, Claude, or another LLM
 - an explicit list of recurring preferences or working conventions
 
-Place source copies under `profile/sources/files/`, or register a secure external location in `profile/sources/index.md` when the material should not be committed to Git. Then use:
+You do not need to move these files into an unfamiliar folder by hand. In the VS Code Explorer or your operating-system file browser, right-click each file, choose **Copy Path**, and paste the paths into the prompt. Quoting paths is helpful when they contain spaces.
 
 ```text
-Build my personal profile from the material under profile/sources/files/. It includes a CV, writing samples, and saved memories exported from other LLMs. Follow workspace/repo/profile-onboarding.md. Preserve the originals, inventory the sources, distinguish facts from preferences and model inferences, flag conflicts or sensitive material, and draft proposed updates in profile/working/. Do not update the durable profile files until I approve the proposal.
+Build my personal profile from these files:
+- "<copied path to CV>"
+- "<copied path to writing samples>"
+- "<copied path to exported LLM memories>"
+
+Follow workspace/repo/profile-onboarding.md. Inspect the supplied paths read-only first. Preserve the originals, inventory the sources, distinguish facts from preferences and model inferences, and flag conflicts or sensitive material. Ask before copying source files into the repository; otherwise register an appropriate source pointer. Draft proposed updates in profile/working/ and tell me the path of every file you create. Do not update the durable profile files until I approve the proposal.
 ```
 
-The agent should prepare an attributed proposal rather than copying whole source documents into active memory. After review, approved material can be distilled into `profile/context.md`, `identity.md`, `preferences.md`, `writing_style.md`, `relationships.md`, and `active_notes.md`. See [Personal Profile Onboarding](./workspace/repo/profile-onboarding.md) for the full workflow and privacy guardrails.
+The agent should prepare an attributed proposal rather than copying whole source documents into active memory. It should either preserve an approved copy under `profile/sources/files/` or register a safe pointer in `profile/sources/index.md`, and clearly report which it did. After review, approved material can be distilled into `profile/context.md`, `identity.md`, `preferences.md`, `writing_style.md`, `relationships.md`, and `active_notes.md`. See [Personal Profile Onboarding](./workspace/repo/profile-onboarding.md) for the full workflow and privacy guardrails.
 
 A useful first project prompt is:
 

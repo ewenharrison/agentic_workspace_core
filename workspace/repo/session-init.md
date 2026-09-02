@@ -47,10 +47,10 @@ When the user gives `Initialise personal context`, the agent should:
 When the user gives `Build personal profile`, the agent should:
 
 1. Open `workspace/repo/profile-onboarding.md` and the profile-onboarding preflight checklist.
-2. Confirm the supplied source set, exclusions, privacy expectations, and Git-retention choices.
-3. Preserve or register the source material under `profile/sources/`.
+2. Confirm the exact copied source paths, exclusions, privacy expectations, and Git-retention choices.
+3. Inspect source paths read-only, then ask before copying files under `profile/sources/`; otherwise register safe external pointers.
 4. Draft an attributed inventory and proposed changes in date-prefixed files under `profile/working/`.
-5. Stop for explicit review before updating the durable top-level profile files.
+5. Report every created path and stop for explicit review before updating the durable top-level profile files.
 
 ## Purpose
 

@@ -41,3 +41,9 @@ For repeated signal review, first load workspace/repo/signal-review-protocol.md.
 ```text
 For publication, website, document, dataset, or other corpus retrieval, first load workspace/repo/corpus-retrieval-protocol.md. Run an access smoke test before bulk retrieval, keep credentials and reusable sessions out of the repo, maintain a retrieval manifest, and treat extraction/coding as provisional working material until reviewed.
 ```
+
+## Constraint-Aware Independent Review Guard
+
+```text
+For an independent grant or manuscript review, first load workspace/repo/independent-review-protocol.md. Establish the authoritative criteria and the funder's strategic incentives before scoring. Preserve clean-room findings, but classify every major criticism by actionability and test whether the proposed remedy would improve fit with the actual call. Do not present narrowing as a compulsory fix when it would dismantle the proposition the funder is being asked to support.
+```

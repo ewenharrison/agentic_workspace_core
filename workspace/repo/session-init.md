@@ -20,7 +20,7 @@ When the user gives the initialisation command, the agent should:
 
 1. If `profile/context.md` exists, open it first.
 2. Open `workspace/repo/shared-procedures.md`.
-3. Open task-relevant repo procedures before acting. For literature, web, PubMed, Crossref, Semantic Scholar, journal, or URL access work, open `workspace/repo/literature-search-protocol.md`. For repeated signal review, open `workspace/repo/signal-review-protocol.md`. For publication, website, document, dataset, or other corpus retrieval, open `workspace/repo/corpus-retrieval-protocol.md`. For Word export, open `workspace/repo/word-export.md`.
+3. Open task-relevant repo procedures before acting. For literature, web, PubMed, Crossref, Semantic Scholar, journal, or URL access work, open `workspace/repo/literature-search-protocol.md`. For repeated signal review, open `workspace/repo/signal-review-protocol.md`. For publication, website, document, dataset, or other corpus retrieval, open `workspace/repo/corpus-retrieval-protocol.md`. For independent application or manuscript review, open `workspace/repo/independent-review-protocol.md`. For Word export, open `workspace/repo/word-export.md`.
 4. Open `workspace/projects/<project-slug>/memory.md`.
 5. Open `workspace/projects/<project-slug>/project.md`.
 6. Open `workspace/projects/<project-slug>/approved/index.md` for approved evidence navigation.

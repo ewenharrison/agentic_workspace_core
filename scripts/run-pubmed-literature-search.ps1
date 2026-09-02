@@ -317,7 +317,7 @@ $protocolMarkdown = Get-Content -LiteralPath $resolvedProtocolPath -Raw
 $query = Get-PubMedQuery -Markdown $protocolMarkdown
 $searchTitle = Get-ProtocolValue -Markdown $protocolMarkdown -Name "Search title"
 if ([string]::IsNullOrWhiteSpace($searchTitle)) {
-    $searchTitle = Split-Path -LeafBase $resolvedProtocolPath
+    $searchTitle = [System.IO.Path]::GetFileNameWithoutExtension($resolvedProtocolPath)
 }
 
 $protocolMaxResults = Get-ProtocolValue -Markdown $protocolMarkdown -Name "Max results"
@@ -379,17 +379,26 @@ $queryTranslation = [string]$searchResponse.esearchresult.querytranslation
 
 $records = @()
 if ($idList.Count -gt 0) {
-    $fetchParams = $commonParams.Clone()
-    $fetchParams.Remove("retmode")
-    $fetchParams.id = ($idList -join ",")
-    $fetchParams.retmode = "xml"
-    $encodedFetchParams = ($fetchParams.GetEnumerator() | ForEach-Object {
-        "{0}={1}" -f [uri]::EscapeDataString([string]$_.Key), [uri]::EscapeDataString([string]$_.Value)
-    }) -join "&"
-    $fetchUri = "$baseUri/efetch.fcgi?$encodedFetchParams"
-    $fetchText = Invoke-WebRequest -Uri $fetchUri -Headers @{ "User-Agent" = "agentic-workspace-pubmed-search/1.0" } -UseBasicParsing
-    [xml]$fetchXml = $fetchText.Content
-    $articleNodes = @($fetchXml.SelectNodes("//*[local-name()='PubmedArticle']"))
+    $fetchChunkSize = 100
+    $articleNodes = @()
+    for ($offset = 0; $offset -lt $idList.Count; $offset += $fetchChunkSize) {
+        $lastIndex = [Math]::Min($offset + $fetchChunkSize - 1, $idList.Count - 1)
+        $chunkIds = @($idList[$offset..$lastIndex])
+        $fetchParams = $commonParams.Clone()
+        $fetchParams.Remove("retmode")
+        $fetchParams.id = ($chunkIds -join ",")
+        $fetchParams.retmode = "xml"
+        $encodedFetchParams = ($fetchParams.GetEnumerator() | ForEach-Object {
+            "{0}={1}" -f [uri]::EscapeDataString([string]$_.Key), [uri]::EscapeDataString([string]$_.Value)
+        }) -join "&"
+        $fetchUri = "$baseUri/efetch.fcgi?$encodedFetchParams"
+        $fetchText = Invoke-WebRequest -Uri $fetchUri -Headers @{ "User-Agent" = "agentic-workspace-pubmed-search/1.0" } -UseBasicParsing
+        [xml]$fetchXml = $fetchText.Content
+        $articleNodes += @($fetchXml.SelectNodes("//*[local-name()='PubmedArticle']"))
+        if ($lastIndex -lt ($idList.Count - 1)) {
+            Start-Sleep -Milliseconds 1100
+        }
+    }
     $records = @($articleNodes | ForEach-Object { Convert-PubMedArticle -Article $_ })
 }
 

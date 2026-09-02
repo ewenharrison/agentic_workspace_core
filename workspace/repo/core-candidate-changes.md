@@ -11,7 +11,7 @@ Use this file as the running shortlist of framework improvements that may be pro
 
 ## Active Candidates
 
-No active candidates currently pending after the 2026-05-29 promotion pass.
+No active candidates after the 2026-09-02 promotion review.
 
 When adding a candidate, include:
 
@@ -44,7 +44,19 @@ When adding a candidate, include:
 - Why: the generic signal-review lifecycle has been promoted, but individual collectors still depend on local platforms, credentials, schedules, and destination details.
 - Evidence: live use showed the workflow is valuable, but public promotion should stay connector-agnostic unless a specific public connector is deliberately supported.
 
+### Project reminder action surface
+- Status: `Watch`
+- Why: the daily/weekly project-reminder loop is valuable, but the current implementation is Trello-specific and deliberately exports private project names and next-action text to a configured external board.
+- Evidence: live use across many projects shows a strong reusable pattern: scan `memory.md` next actions, distinguish recent/dirty project activity from all-project review, support ignore and snooze rules, and rebuild the external checklist atomically.
+- Possible core-safe direction: promote later as a connector-agnostic reminder protocol plus optional sink adapters, with generic example config and explicit external-transfer guardrails.
+
 ## Keep Private
+
+### Personal headed-letter assets and signing workflow
+- Status: `Keep private`
+- Why: personal letterhead, professional contact blocks, local profile paths and ink signatures are user-specific. An ink signature is a signing credential and must not enter the public core export.
+- Evidence: a user-finalised promotion letter showed that a reference document preserves headers but silently drops body signatures and may lose visible paragraph separation. The private profile workflow now uses a sanitized header reference, explicit body spacing and an opt-in signing wrapper.
+- Core-safe lesson: retain only the generic procedure that profile-specific formal correspondence must be selected explicitly, signatures require per-document authority and paragraph spacing must be validated.
 
 ### Adaptive-card Teams webhook default
 - Status: `Keep private`
@@ -63,6 +75,36 @@ When adding a candidate, include:
 - Rule: never promote the local icon or asset library process, indexes, search scripts, or metadata into `agentic_workspace_core`.
 
 ## Promoted
+
+### 2026-09-02: PubMed `efetch` batching hardening
+- Status: `Promoted`
+- Why: protocol-driven PubMed searches should handle larger result sets without failing on a single oversized `efetch` request.
+- Promoted files/conventions: `scripts/run-pubmed-literature-search.ps1` now fetches records in bounded chunks with a short inter-request pause and derives fallback titles from the protocol filename safely.
+
+### 2026-09-02: source-sidecar extract convention
+- Status: `Promoted`
+- Why: durable, exact machine-readable extracts should live beside preserved source material rather than as durable clutter in `working/`.
+- Promoted files/conventions: shared procedures and preflight checklists now place PDF, DOCX, slide, webpage, and OCR extracts in `sources/files/` or `sources/files/extracted-text/`, while reserving `working/` for notes, manifests, syntheses, and provisional outputs.
+
+### 2026-09-02: constraint-aware independent review protocol
+- Status: `Promoted`
+- Why: grant, manuscript, programme, and competitive-submission reviews need a clean-room method that distinguishes correctable defects from strategic trade-offs.
+- Promoted files/conventions: `workspace/repo/independent-review-protocol.md`, shared procedures, preflight checklists, session initiation, and agent prompt snippets.
+
+### 2026-09-02: Word export and tracked-change review hardening
+- Status: `Promoted`
+- Why: Word workflows need to preserve manually formatted baselines, distinguish accepted and marked-up states, produce auditable tracked review copies, and avoid heading-spacing failures in routine exports.
+- Promoted files/conventions: generic Word export and tracked-change procedures; accepted-copy, tracked-change, comment, paragraph, revision, and proofing inspection helpers; heading-style hardening in `scripts/export-markdown-to-word.ps1`; and task-loading/preflight guidance.
+
+### 2026-09-02: generated scaffold Markdown escaping fix
+- Status: `Promoted`
+- Why: generated project Markdown must preserve literal code paths and checklist tokens inside PowerShell here-strings.
+- Promoted files/conventions: `scripts/new-project.ps1` now escapes Markdown backticks in generated project files and activity text.
+
+### 2026-09-02: local scheduled-workflow wake/network guardrail
+- Status: `Promoted`
+- Why: scheduled local workflows must tolerate sleeping devices and brief post-wake network delays without overlapping runs or advancing completed state after failure.
+- Promoted files/conventions: connector-agnostic guidance in `workspace/repo/shared-procedures.md`; platform-specific collectors remain private.
 
 ### 2026-06-13: mandatory date-prefixed `working/` filenames
 - Status: `Promoted`

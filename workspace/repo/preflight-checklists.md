@@ -10,6 +10,7 @@ Use whenever creating a new project folder, project memory files, source notes, 
 - [ ] Use `scripts/new-project.ps1` for project scaffolding instead of manually creating the project files.
 - [ ] If `scripts/new-project.ps1` cannot be used, read the relevant templates from `workspace/_templates/`, especially `init.md`, `project_memory.md`, `memory.md`, and `approved_index.md`, before writing files.
 - [ ] Preserve raw user-provided files or snapshots in `sources/`; do not treat an agent summary of them as approved.
+- [ ] Store durable exact text/OCR extracts as source sidecars under `sources/files/` or `sources/files/extracted-text/`, not as undated clutter in `working/`.
 - [ ] Put all agent-created source notes, syntheses, interview tasks, and draft outputs in `working/` by default.
 - [ ] Date-prefix every non-placeholder file created in `working/` using `YYYY-MM-DD-<descriptive-slug>`.
 - [ ] Create only `approved/index.md` as empty or as a navigation file for already-approved material only.
@@ -23,6 +24,7 @@ Use whenever creating a new project folder, project memory files, source notes, 
 Use for pasted emails, expert feedback, meeting notes, copied document text, interview notes, or other primary material supplied by the user.
 
 - [ ] Save the raw text or snapshot in `sources/` before synthesis.
+- [ ] If you generate an exact text/OCR extract from a preserved source, keep the durable extract beside the source under `sources/`, not in `working/`.
 - [ ] Create any structured summary or interpretation in `working/` unless the user explicitly requests approval.
 - [ ] Date-prefix the `working/` summary or interpretation filename using `YYYY-MM-DD-<descriptive-slug>`.
 - [ ] Link the summary back to the raw source.
@@ -48,6 +50,7 @@ Use for literature reviews, web searches, source discovery, DOI/PubMed/Crossref 
 - [ ] Save the search strategy in `working/` with a `YYYY-MM-DD-` date prefix.
 - [ ] Save first-pass search results or source notes in `working/` or `auto/`, not `approved/`; date-prefix `working/` filenames.
 - [ ] Preserve raw PDFs, snapshots, URLs, or source files in `sources/` when they matter for future verification.
+- [ ] Store durable exact extracts from those sources as source sidecars under `sources/`; keep only extraction summaries, source notes, and syntheses in `working/`.
 - [ ] Use only confirmed citations in fact-bearing drafts.
 - [ ] Promote to `approved/` only after explicit user approval.
 
@@ -74,6 +77,7 @@ Use for building a publication, website, document, dataset, or other multi-item 
 - [ ] Keep passwords, tokens, reusable cookies, browser profiles, and credential files out of the repo.
 - [ ] Create a date-prefixed retrieval plan or access note in `working/`.
 - [ ] Create a manifest with URL/source, status, content type, byte size where available, retrieval date, local path, checksum where appropriate, and extraction status.
+- [ ] Store durable extracted text/OCR sidecars in `sources/files/` or `sources/files/extracted-text/`; use `working/` for retrieval plans, manifests, extraction summaries, coding tables, and provisional syntheses.
 - [ ] Use conservative batching and stop on rate limits, access challenges, non-target content, or unexpected response patterns.
 - [ ] Treat automated extraction and coding as provisional until reviewed.
 
@@ -87,6 +91,20 @@ Use for edits to grant text, concept notes, circulation drafts, abstracts, summa
 - [ ] Keep speculative material in cautious language unless approved evidence supports it.
 - [ ] Regenerate Word export if the Markdown draft has a paired `.docx`.
 - [ ] Update `memory.md` and activity log when the change alters project direction or circulation state.
+
+## Independent Application Or Manuscript Review
+
+Use for clean-room, panel-style, multi-agent, red-team, or scoring reviews.
+
+- [ ] Load `workspace/repo/independent-review-protocol.md`.
+- [ ] Establish authoritative criteria, strategic incentives, exclusions, and application-stage expectations.
+- [ ] State the submission's central strategic bet before scoring.
+- [ ] Keep earlier reviews out of the clean-room assessment until independent scoring is complete.
+- [ ] Classify every major criticism by actionability.
+- [ ] Apply the counterfactual test before recommending narrowing or another change to the central proposition.
+- [ ] Separate compliance or feasibility defects from reviewer preferences and inherent trade-offs.
+- [ ] Preserve the independent audit; add applicant interpretation as a separate section.
+- [ ] Prioritise changes that improve evaluability while preserving funder fit.
 
 ## Promotion To Approved
 
@@ -105,10 +123,25 @@ Use whenever moving material from `working/` or `auto/` into `approved/`.
 Use when saving, rendering or converting Markdown to Word.
 
 - [ ] Load `workspace/repo/word-export.md`.
-- [ ] Use `scripts/export-markdown-to-word.ps1`.
+- [ ] If the task involves tracked changes or comparison against a user-edited `.docx`, also load `workspace/repo/word-track-changes.md`.
+- [ ] Identify whether this is a routine Markdown-to-Word export or a review version of an already formatted/user-edited Word document.
+- [ ] For routine Markdown export, use `scripts/export-markdown-to-word.ps1`.
 - [ ] Use the project `templates/word-reference.docx` if present; otherwise repo-wide `_templates/word-reference.docx`.
+- [ ] For formal correspondence, check whether the live `profile/` layer provides a headed-letter workflow; use it explicitly rather than applying personal letterhead to generic exports.
+- [ ] Insert an ink signature only when the user has explicitly authorised that specific signed/final document.
+- [ ] Verify visible body-paragraph spacing in the generated letter and keep address/signatory lines compact.
+- [ ] If the nearest project template is compressed or submission-specific but the output is a standalone note or review report, use `-UsePandocDefaultReference`.
+- [ ] Confirm that paragraphs and lists have visible separation from headings; routine exports should report adjusted heading styles when the reference template uses zero spacing.
 - [ ] Check whether the target funder/journal/form specifies mechanical formatting that overrides the project template.
 - [ ] Apply any project-specific post-export formatter required by the target form or submission rules.
+- [ ] Supply every required non-secret parameter to the checked formatter and preserve or report its verification output.
+- [ ] For tracked-change review of a user-edited formatted `.docx`, use the user-edited `.docx` as the content baseline; do not round-trip through Markdown as the final Word artefact unless explicitly asked.
+- [ ] If the user-edited `.docx` has existing tracked changes/comments, define whether the accepted or marked-up view is the baseline state. For grant review, default to accepted text plus unresolved comments.
+- [ ] Run Word/Office COM steps outside the sandbox. Do not retry Word COM automation inside the sandbox after it fails.
+- [ ] Run a no-op baseline comparison before applying edits; if this produces substantive changes, stop.
+- [ ] Maintain a short change table for every paragraph changed in the tracked review document.
+- [ ] Run a baseline-preservation audit before reporting: every changed paragraph must map to an intended/approved change, not to older wording or conversion artefacts.
+- [ ] Verify final `.docx` mechanics against the target or selected template: page size, margins, fonts, headers/footers, page breaks, embedded media and tracked-change markup where relevant.
 - [ ] Overwrite the paired `.docx` when updating an existing exported document.
 - [ ] Report if export fails or if Pandoc/reference styles are unavailable.
 

@@ -85,7 +85,7 @@ foreach ($directory in $directories) {
 }
 
 Write-TextFile -Path (Join-Path $projectRoot "init.md") -Force:$Force -Content @"
-# Initialise `$projectSlug`
+# Initialise ``$projectSlug``
 
 Use this file when a new session needs to resume the project cleanly.
 
@@ -105,7 +105,7 @@ Use this file when a new session needs to resume the project cleanly.
 
 ## Project Creation Boundary
 
-Agent-created notes, syntheses, tasks, and outputs start in `working/`; `approved/` is human-gated. Use the `New Project Initiation Or Scaffolding` checklist before adding new scaffolded material.
+Agent-created notes, syntheses, tasks, and outputs start in ``working/``; ``approved/`` is human-gated. Use the ``New Project Initiation Or Scaffolding`` checklist before adding new scaffolded material.
 
 ## Current Resume Intent
 
@@ -117,7 +117,7 @@ Write-TextFile -Path (Join-Path $projectRoot "project.md") -Force:$Force -Conten
 
 ## Overview
 
-Project scaffold created through `scripts/new-project.ps1`.
+Project scaffold created through ``scripts/new-project.ps1``.
 
 ## Quick Access
 
@@ -142,7 +142,7 @@ Project scaffold created through `scripts/new-project.ps1`.
 
 ## Key Decisions
 
-- Decision: `approved/` is human-gated.
+- Decision: ``approved/`` is human-gated.
   Reason: Agent-created material is draft material until explicitly reviewed and promoted by the user.
 
 ## Open Questions
@@ -155,11 +155,11 @@ No substantive project claims have been approved yet.
 
 ## Working Rule
 
-Open `memory.md` first when resuming this project. Use this file for slower-changing project structure, goals and governance.
+Open ``memory.md`` first when resuming this project. Use this file for slower-changing project structure, goals and governance.
 
 ## Important Sources
 
-- Draft and unreviewed material belongs in `working/`.
+- Draft and unreviewed material belongs in ``working/``.
 
 ## Risks Or Unknowns
 
@@ -176,7 +176,7 @@ Write-TextFile -Path (Join-Path $projectRoot "memory.md") -Force:$Force -Content
 
 ## Current Snapshot
 
-Project scaffold created through `scripts/new-project.ps1`. No substantive project claims or outputs have been approved yet.
+Project scaffold created through ``scripts/new-project.ps1``. No substantive project claims or outputs have been approved yet.
 
 ## Current Objective
 
@@ -188,7 +188,7 @@ Define the immediate project objective.
 
 ## Open Loops
 
-- `[Q1]` Define the first deliverable.
+- ``[Q1]`` Define the first deliverable.
 
 ## Active Sources
 
@@ -200,8 +200,8 @@ Define the immediate project objective.
 
 ## Next Actions
 
-- [ ] Add raw source files under `sources/` if supplied.
-- [ ] Put draft source notes, syntheses, tasks, and outputs in `working/`.
+- [ ] Add raw source files under ``sources/`` if supplied.
+- [ ] Put draft source notes, syntheses, tasks, and outputs in ``working/``.
 
 ## Suggested Next Prompts
 
@@ -209,8 +209,8 @@ Define the immediate project objective.
 
 ## Guardrails
 
-- `approved/` is human-gated. Do not create or move files there without explicit human approval or an explicit instruction to promote a named draft.
-- Agent-created material starts in `working/`.
+- ``approved/`` is human-gated. Do not create or move files there without explicit human approval or an explicit instruction to promote a named draft.
+- Agent-created material starts in ``working/``.
 "@
 
 Write-TextFile -Path (Join-Path $projectRoot "approved\index.md") -Force:$Force -Content @"
@@ -220,14 +220,14 @@ This folder is intentionally empty until the user explicitly reviews and promote
 
 ## Approval Rule
 
-Files may enter `approved/` only after explicit human approval or an explicit instruction to promote a named draft. Agent-created source notes, syntheses, tasks, and outputs must start in `working/`.
+Files may enter ``approved/`` only after explicit human approval or an explicit instruction to promote a named draft. Agent-created source notes, syntheses, tasks, and outputs must start in ``working/``.
 
 ## Approved Folders
 
-- `framing/`: approved positioning, rationale, and argument scaffolding
-- `sources/`: approved source notes
-- `syntheses/`: approved syntheses and analyses
-- `outputs/`: final or agreed deliverables
+- ``framing/``: approved positioning, rationale, and argument scaffolding
+- ``sources/``: approved source notes
+- ``syntheses/``: approved syntheses and analyses
+- ``outputs/``: final or agreed deliverables
 
 ## Current Approved Material
 
@@ -249,8 +249,8 @@ Write-TextFile -Path (Join-Path $projectRoot "logs\activity.md") -Force:$Force -
 
 ## $(Get-Date -Format yyyy-MM-dd)
 
-- Created project scaffold through `scripts/new-project.ps1`.
-- Created empty human-gated `approved/index.md`.
+- Created project scaffold through ``scripts/new-project.ps1``.
+- Created empty human-gated ``approved/index.md``.
 "@
 
 & (Join-Path $repoRoot "scripts\set-approved-write-lock.ps1") -Mode Lock -Project $projectSlug | Out-Host

@@ -16,7 +16,7 @@ If a procedure changes, update it here first and then only add project-specific 
 - Use `Initialise personal context` to load only the personal-context layer.
 - Use `Initialise project <project-slug>` to restart a project cleanly in a new session.
 - Load this shared-procedures file during project initialisation before acting on project tasks.
-- Load task-relevant repo procedure files during initialisation rather than discovering them only after a failure. For literature, web, journal, or URL access work, load [literature-search-protocol.md](literature-search-protocol.md). For repeated signal review, load [signal-review-protocol.md](signal-review-protocol.md). For publication or site corpus retrieval, load [corpus-retrieval-protocol.md](corpus-retrieval-protocol.md). For Word export, load [word-export.md](word-export.md). For common operational actions, load and use [preflight-checklists.md](preflight-checklists.md).
+- Load task-relevant repo procedure files during initialisation rather than discovering them only after a failure. For literature, web, journal, or URL access work, load [literature-search-protocol.md](literature-search-protocol.md). For repeated signal review, load [signal-review-protocol.md](signal-review-protocol.md). For publication or site corpus retrieval, load [corpus-retrieval-protocol.md](corpus-retrieval-protocol.md). For independent application or manuscript review, load [independent-review-protocol.md](independent-review-protocol.md). For Word export, load [word-export.md](word-export.md). For tracked-change review of Word documents, also load [word-track-changes.md](word-track-changes.md). For common operational actions, load and use [preflight-checklists.md](preflight-checklists.md).
 - Follow the read order defined in [session-init.md](./session-init.md).
 - Return a short rehydration summary covering objective, carried-forward claims, open loops, next actions, guardrails, and repo-level procedure files loaded.
 
@@ -27,7 +27,9 @@ If a procedure changes, update it here first and then only add project-specific 
 - `memory.md` is a living project dashboard, not a route for unreviewed agent conclusions to become trusted content. It may record operational state, completed actions, publication status, links, open loops, and pointers to source files or notes. It should not introduce new substantive claims, interpretations, literature conclusions, or recommendations unless they are already supported by Tier 1 approved material or explicitly approved by the user.
 - `project.md` is for slower-changing structure, goals, decisions, and governance.
 - `working/` is Tier 1 pre-approved space: human-in-the-loop, useful for drafts and provisional notes, but not canonical.
-- Working filename dating is mandatory: every non-placeholder file created in `working/` must begin with an ISO date prefix, `YYYY-MM-DD-`, followed by a short descriptive slug. This applies to agent-created notes, extracted text, search strategies, search results, syntheses, drafts, and task files. `.gitkeep` is exempt.
+- Working filename dating is mandatory: every non-placeholder file created in `working/` must begin with an ISO date prefix, `YYYY-MM-DD-`, followed by a short descriptive slug. This applies to agent-created notes, temporary extracts, search strategies, search results, syntheses, drafts, and task files. `.gitkeep` is exempt.
+- Exact machine-readable text extracted from PDFs, DOCX files, slides, webpages, OCR, or other preserved sources is a source sidecar by default. Store durable extracts in `sources/files/` beside the original file, or in `sources/files/extracted-text/` with an index if that keeps the source folder cleaner.
+- Do not leave durable exact source extracts in `working/` merely because they were generated during synthesis. `working/` should contain extraction summaries, manifests, source notes, draft syntheses, and provisional outputs. A task-specific temporary extract may live in `working/` only while actively needed, must be date-prefixed, and should be moved to `sources/` or removed once the source note or synthesis is complete.
 - `approved/` is canonical only for human-approved material.
 - New projects should organise `approved/` into `framing/`, `sources/`, `syntheses/`, and `outputs/`, with `approved/index.md` as the canonical navigation file.
 - Use `approved/framing/` for positioning, rationale, argument structure, concept framing, and other durable scaffolding. Use `approved/outputs/` for completed or agreed deliverables such as final grant applications, manuscripts, submitted cover letters, policy briefs, reviewer packs, and circulation-ready documents.
@@ -35,6 +37,7 @@ If a procedure changes, update it here first and then only add project-specific 
 - New literature or source summaries default to `working/`, even if they are well structured, cited, or written using the source-note template.
 - Promote material into `approved/` only after explicit human-in-the-loop approval, or when the user explicitly asks to create an approved note. If a source itself is user-provided or captured for preservation, store the raw file or snapshot in `sources/`; do not treat an agent summary of it as approved until reviewed.
 - When the user provides substantive email text, expert feedback, meeting notes, pasted documents, or other primary material, first preserve the raw text in `sources/` before creating a structured summary, synthesis, or project-memory interpretation. The summary should link back to the raw source.
+- Source trails should link to the original source file or its source-sidecar extract in `sources/`, not to duplicate exact extracts in `working/`.
 - When a draft or working note is promoted to `approved/`, remove the duplicate copy from `working/` and update links to the approved version, unless the user explicitly asks to preserve a draft history there.
 - After any promotion to `approved/`, run a link/path check for the promoted filename or title, update project indexes and memory to the approved path, and verify there is no same-purpose stale copy left in `working/`. This check is mandatory before reporting completion.
 - `auto/` is the Tier 2 autonomous lane and is provisional unless promoted. Some projects will have little or no active Tier 2 material.
@@ -83,6 +86,7 @@ If a procedure changes, update it here first and then only add project-specific 
 - The workflow should say whether the command can run in the sandbox or must run outside it, why that boundary exists, what the command is allowed to do, and which mutation guardrails remain in force.
 - Escalating a command for local access does not grant permission to import, send, delete, move, archive, mark read/unread, or update state unless that action is separately authorised by the workflow and the user request.
 - Where practical, keep read-only collection separate from import, state updates, or other mutations so a failed access attempt does not blur safety boundaries.
+- Local Windows scheduled workflows should assume this is a frequently sleeping or powered-off laptop, not an always-on server. Default scheduled task settings should include `-StartWhenAvailable`, `-MultipleInstances IgnoreNew`, and battery-safe continuation, but should avoid `-RunOnlyIfNetworkAvailable`; if network access is needed, the wrapper should wait briefly for connectivity after wake/login and then fail cleanly without advancing completed state.
 
 ## Search, Scout, And Synthesis Rule
 
@@ -120,6 +124,14 @@ If a procedure changes, update it here first and then only add project-specific 
 - Use only citations from confirmed sources: local source files supplied by the user, extracted PDFs, official journal pages, PubMed/Crossref/DOI records, official organisation pages, or executed search-results notes.
 - Never generate a bibliographic citation from model memory alone. If a citation has not been confirmed, either verify it first or mark the claim as `[source needed]`.
 - If a factual claim cannot be supported by the confirmed source set, do not smooth over the gap. Search, ask, or remove the claim.
+
+## Independent Review Rule
+
+- Use [independent-review-protocol.md](independent-review-protocol.md) for independent reviews of grants, manuscripts, and competitive submissions.
+- Establish authoritative assessment criteria and funder or journal incentives before scoring.
+- Preserve clean-room reviewer findings, then separately classify major criticisms as directly addressable, addressable through clarification or architecture, deferred to a later stage, an inherent strategic trade-off, or an incompatible recommendation.
+- Apply a counterfactual test before recommending scope changes: assess whether the proposed remedy would improve competitiveness under the actual call or merely make the submission conform to a generic review ideal.
+- Where a broad programme is strategically required, recommend the smallest changes that improve coherence and evaluability without dismantling the central proposition.
 
 ## Agent Run Register Rule
 
@@ -160,7 +172,9 @@ If a procedure changes, update it here first and then only add project-specific 
 
 - When asked to save, export, render, or convert Markdown to Word, use [word-export.md](word-export.md).
 - Default to Pandoc via `scripts/export-markdown-to-word.ps1`.
-- Avoid Word COM automation unless the user explicitly asks for it.
+- Avoid Word COM automation for routine Markdown-to-Word export.
+- When the user asks for tracked changes in a Word document, use [word-track-changes.md](word-track-changes.md). Treat the user-edited `.docx` as the baseline, create an accepted baseline copy if needed, generate the clean revised `.docx`, then create and validate the tracked-change review copy.
+- Word/Office COM automation must run outside the sandbox. Treat this as a fixed execution boundary, not as a retry preference.
 
 ## PDF OCR Rule
 

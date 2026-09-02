@@ -18,7 +18,24 @@ It is designed for people who want:
 3. Start a filesystem-capable LLM coding CLI, such as Codex CLI or Claude Code, in the IDE terminal.
 4. Enter an ordinary-language prompt describing the work. The agent should read the repo instructions and operate on the files directly.
 
-A useful first prompt is:
+### Build Your Profile (Optional)
+
+Before creating projects, you can build the optional personal-context layer from material you choose to provide, such as:
+
+- a current CV, resume, biography, or biosketch
+- representative writing samples
+- saved memories exported from ChatGPT, Claude, or another LLM
+- an explicit list of recurring preferences or working conventions
+
+Place source copies under `profile/sources/files/`, or register a secure external location in `profile/sources/index.md` when the material should not be committed to Git. Then use:
+
+```text
+Build my personal profile from the material under profile/sources/files/. It includes a CV, writing samples, and saved memories exported from other LLMs. Follow workspace/repo/profile-onboarding.md. Preserve the originals, inventory the sources, distinguish facts from preferences and model inferences, flag conflicts or sensitive material, and draft proposed updates in profile/working/. Do not update the durable profile files until I approve the proposal.
+```
+
+The agent should prepare an attributed proposal rather than copying whole source documents into active memory. After review, approved material can be distilled into `profile/context.md`, `identity.md`, `preferences.md`, `writing_style.md`, `relationships.md`, and `active_notes.md`. See [Personal Profile Onboarding](./workspace/repo/profile-onboarding.md) for the full workflow and privacy guardrails.
+
+A useful first project prompt is:
 
 ```text
 Read README.md and workspace/repo/shared-procedures.md. Initialise project sample-project. Explain the trusted and provisional folder boundaries, then tell me what you need from me before making changes.
@@ -70,7 +87,7 @@ This repo contains the reusable structure only.
 
 It is intended to be copied, forked, or adapted into a private working repo where real projects live.
 
-The design centres on three ideas:
+The design centres on four ideas:
 
 - `memory.md` is the fast briefing file for resuming work
 - `project.md` holds slower-changing goals, decisions, and governance
@@ -110,9 +127,12 @@ profile/
     outputs/
   auto/
     index.md
+  working/
+    index.md
   logs/
     activity.md
   sources/
+    index.md
     files/
     links/
 workspace/
@@ -302,6 +322,10 @@ For repeated signal streams, use the signal-review protocol: collect a bounded r
 To load only the personal-context layer, use:
 
 `Initialise personal context`
+
+To create or materially refresh that layer from user-provided sources, use:
+
+`Build personal profile`
 
 When the `profile/` layer is in use, you can also say:
 

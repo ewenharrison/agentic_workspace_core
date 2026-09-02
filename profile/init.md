@@ -2,14 +2,16 @@
 
 Use this file when a new session needs to load the durable personal-context layer cleanly.
 
-## Accepted Command
+## Accepted Commands
 
 `Initialise personal context`
 
-## What That Command Means
+`Build personal profile`
 
-The agent should treat the command as a request to reload the user-level context before doing anything else.
-Shared procedure details live in [../memories/repo/shared-procedures.md](../memories/repo/shared-procedures.md).
+## What The Commands Mean
+
+`Initialise personal context` reloads the reviewed user-level context before other work. `Build personal profile` starts a source-grounded onboarding or refresh workflow and stops for review before durable profile changes.
+Shared procedure details live in [../workspace/repo/shared-procedures.md](../workspace/repo/shared-procedures.md).
 
 ## Required Read Order
 
@@ -35,3 +37,9 @@ The resume summary should state:
 ## Current Resume Intent
 
 Reload this layer as the durable personal context for work across projects, distinct from project-specific memory.
+
+## Building Or Refreshing The Profile
+
+When the user gives `Build personal profile`, load [profile-onboarding.md](../workspace/repo/profile-onboarding.md) and the `Personal Profile Onboarding` section of [preflight-checklists.md](../workspace/repo/preflight-checklists.md).
+
+Preserve supplied sources, inventory provenance, and draft attributed changes in [working/](./working/). Do not write imported or inferred material directly into the durable profile files before explicit review.

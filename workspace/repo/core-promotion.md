@@ -110,12 +110,12 @@ Use this checklist when promoting the personal-context layer into `agentic_works
 - [x] Promote the updated repo procedures in:
   - `workspace/repo/session-init.md`
   - `workspace/repo/shared-procedures.md`
-- [ ] Ensure public-facing docs state clearly that `profile/` is for durable user-level context and should be used selectively.
-- [ ] Ensure public-facing docs state clearly that real personal-context content should never be exported from a private repo into core.
+- [x] Ensure public-facing docs state clearly that `profile/` is for durable user-level context and should be used selectively.
+- [x] Ensure public-facing docs state clearly that real personal-context content should never be exported from a private repo into core.
 
 ### Safe Export Changes Needed
 
-- [ ] Do not export the live private `profile/` folder as-is.
+- [x] Do not export the live private `profile/` folder as-is.
 - [x] Create a sanitized core-safe `profile/` template set containing placeholder/example files only:
   - `profile/init.md`
   - `profile/context.md`
@@ -126,7 +126,9 @@ Use this checklist when promoting the personal-context layer into `agentic_works
   - `profile/active_notes.md`
   - `profile/approved/index.md`
   - `profile/auto/index.md`
+  - `profile/working/index.md`
   - `profile/logs/activity.md`
+  - `profile/sources/index.md`
   - `profile/sources/files/.gitkeep`
   - `profile/sources/links/.gitkeep`
 - [x] Decide whether those sanitized files live:
@@ -137,10 +139,10 @@ Use this checklist when promoting the personal-context layer into `agentic_works
 
 ### Quality Checks Before Promotion
 
-- [ ] Confirm that the core bundle contains no real names, private relationships, personal preferences, or imported personal notes from the live repo.
-- [ ] Confirm that the profile docs make privacy boundaries explicit.
-- [ ] Confirm that a fresh user could understand when to use `profile/` versus `workspace/projects/`.
-- [ ] Confirm that the optional `profile/` layer does not break the project-only workflow for users who do not want personal context.
+- [x] Confirm that the core bundle contains no real names, private relationships, personal preferences, or imported personal notes from the live repo.
+- [x] Confirm that the profile docs make privacy boundaries explicit.
+- [x] Confirm that a fresh user could understand when to use `profile/` versus `workspace/projects/`.
+- [x] Confirm that the optional `profile/` layer does not break the project-only workflow for users who do not want personal context.
 
 ### Recommended Implementation Order
 

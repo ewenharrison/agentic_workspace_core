@@ -76,6 +76,11 @@ When adding a candidate, include:
 
 ## Promoted
 
+### 2026-09-02: source-grounded personal profile onboarding
+- Status: `Promoted`
+- Why: new users need a safe, reproducible way to build the optional profile from CVs, biographies, writing samples, exported LLM memories, and explicit preferences without turning imported model output into trusted personal memory.
+- Promoted files/conventions: `workspace/repo/profile-onboarding.md`; `profile/working/` and `profile/sources/index.md`; README Quick Start guidance; profile, session-init, shared-procedure, structure, preflight, and agent-prompt integration.
+
 ### 2026-09-02: PubMed `efetch` batching hardening
 - Status: `Promoted`
 - Why: protocol-driven PubMed searches should handle larger result sets without failing on a single oversized `efetch` request.

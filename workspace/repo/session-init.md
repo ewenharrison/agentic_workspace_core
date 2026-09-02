@@ -14,6 +14,10 @@ Example:
 
 `Initialise personal context`
 
+## Profile Onboarding Command
+
+`Build personal profile`
+
 ## Expected Agent Behavior
 
 When the user gives the initialisation command, the agent should:
@@ -40,6 +44,14 @@ When the user gives `Initialise personal context`, the agent should:
 2. Open the remaining files listed in `profile/init.md`.
 3. Return a short rehydration summary covering the most relevant personal-context facts, preferences, active notes, and privacy guardrails.
 
+When the user gives `Build personal profile`, the agent should:
+
+1. Open `workspace/repo/profile-onboarding.md` and the profile-onboarding preflight checklist.
+2. Confirm the supplied source set, exclusions, privacy expectations, and Git-retention choices.
+3. Preserve or register the source material under `profile/sources/`.
+4. Draft an attributed inventory and proposed changes in date-prefixed files under `profile/working/`.
+5. Stop for explicit review before updating the durable top-level profile files.
+
 ## Purpose
 
 This command means: "We are starting again. Reload the project context from the memory system before doing new work."
@@ -47,6 +59,7 @@ This command means: "We are starting again. Reload the project context from the 
 ## Notes
 
 - `profile/context.md` is the optional global pre-project briefing file.
+- `profile/working/` is the human-in-the-loop staging area for profile imports and proposed updates; it is not loaded as durable personal context by default.
 - `memory.md` remains the primary quick-start file.
 - `project.md` remains the slower-changing governance and structure file.
 - `approved/` is canonical only for human-approved material. New projects should organise approved material as `approved/framing/`, `approved/sources/`, `approved/syntheses/`, and `approved/outputs/`, with `approved/index.md` as the live navigation file, but agent-created material starts in `working/`.

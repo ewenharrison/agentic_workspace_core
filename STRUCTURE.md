@@ -25,6 +25,30 @@ workspace/projects/<project>/
   logs/         activity history
 ```
 
+## Personal Context Layer
+
+The optional `profile/` layer holds selective user context that is useful across projects. It follows the same raw, working, approved, and autonomous distinction without turning the whole personal archive into active memory.
+
+```text
+profile/
+  sources/       user-provided originals, secure pointers, and provenance index
+  working/       human-in-the-loop inventories and proposed profile updates
+  approved/      reviewed source notes supporting durable profile content
+  auto/          autonomous or exploratory observations; provisional
+
+  context.md     compact cross-project briefing
+  identity.md    stable user-level facts
+  preferences.md recurring working preferences
+  writing_style.md
+                  source-linked writing guidance
+  relationships.md
+                  minimal recurring relationship context
+  active_notes.md
+                  temporary cross-project context
+```
+
+Use `workspace/repo/profile-onboarding.md` when constructing or materially refreshing this layer. Raw imports do not become durable profile memory until reviewed.
+
 ## Control Plane
 
 `memory.md`, `project.md`, and `logs/` are not evidence tiers. They are the project control plane:

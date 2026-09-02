@@ -1,6 +1,6 @@
-# Agentic Memory Core
+# Agentic Workspace Core
 
-`agentic_workspace_core` is a reusable file-system framework for running project-based human-and-agent memory safely.
+`agentic_workspace_core` is a reusable file-system framework for running durable, project-based work with a human and an LLM coding agent.
 
 It also supports an optional top-level personal-context layer at `profile/` for durable user-level preferences, writing style, and other cross-project context.
 
@@ -10,6 +10,59 @@ It is designed for people who want:
 - a clear split between trusted memory and provisional agent output
 - lightweight session rehydration
 - reusable templates for notes, source summaries, and project state
+
+## Quick Start
+
+1. Fork, clone, or copy this repository into a private working repository.
+2. Open the repository root in an IDE such as VS Code.
+3. Start a filesystem-capable LLM coding CLI, such as Codex CLI or Claude Code, in the IDE terminal.
+4. Enter an ordinary-language prompt describing the work. The agent should read the repo instructions and operate on the files directly.
+
+A useful first prompt is:
+
+```text
+Read README.md and workspace/repo/shared-procedures.md. Initialise project sample-project. Explain the trusted and provisional folder boundaries, then tell me what you need from me before making changes.
+```
+
+Prompts do not need special syntax. They work best when they make five things clear:
+
+```text
+Context: the project to initialise or the repo procedure to use
+Task: the concrete action or question
+Inputs: the files, URLs, criteria, or source set to use
+Constraints: approval boundaries, exclusions, and actions that require a pause
+Output: the file or decision you expect, including its intended folder
+```
+
+Not every prompt needs all five labels. Once a project is initialised, a short follow-up such as `Update the synthesis with this paper, but keep it in working` is usually enough.
+
+Example prompts:
+
+```text
+Create a new project called medication-safety using the repo's project scaffolder. Set its initial goal to review interventions that reduce prescribing errors. Do not add agent-authored material to approved/. Finish by showing me the new project structure and open questions.
+```
+
+```text
+Initialise project medication-safety. Read its current memory and approved index, then summarise where we left off and complete the next action. Keep new analysis in a date-prefixed file under working/ and update memory.md when finished.
+```
+
+```text
+Initialise project medication-safety. Import the PDF at <path-to-file> as a source. Preserve the original under sources/files/, create a dated source note in working/, distinguish direct evidence from interpretation, and do not promote anything to approved/ yet.
+```
+
+```text
+Initialise project medication-safety. Help me design a reproducible PubMed search protocol for medication-review interventions in older adults. Draft the protocol in working/, include eligibility criteria and proposed search terms, and stop for my approval before running the search.
+```
+
+```text
+Initialise project medication-safety. Synthesize the approved source notes into a draft briefing in working/. Use only supported claims, cite the source notes, identify disagreements and evidence gaps, and recommend what should be reviewed before promotion.
+```
+
+```text
+Independently review the draft application at <path-to-document> against the criteria at <path-to-criteria>. Follow workspace/repo/independent-review-protocol.md. Record your findings before reading any previous review, classify each issue by actionability, and save a dated review report in the project's working/ folder.
+```
+
+Useful control phrases include `do not write yet`, `keep this in working`, `use approved sources only`, `stop before external action`, and `ask before committing or pushing`. These make the human approval boundary explicit without requiring a specialised command language.
 
 ## What This Repo Is
 

@@ -13,9 +13,9 @@ It is designed for people who want:
 
 ## Quick Start
 
-1. Fork, clone, or copy this repository into a private working repository.
-2. Open the repository root in an IDE such as VS Code.
-3. Start a filesystem-capable LLM coding CLI, such as Codex CLI or Claude Code, in the IDE terminal.
+1. Fork, clone, or more likely copy this repository into a folder on your personal computer.
+2. Open the folder root in an IDE such as VS Code.
+3. Start a filesystem-capable LLM such as Codex, Claude or Gemini.
 4. Enter an ordinary-language prompt describing the work. The agent should read the repo instructions and operate on the files directly.
 
 ### Build Your Profile (Optional)

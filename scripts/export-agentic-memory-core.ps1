@@ -43,7 +43,9 @@ $includePaths = @(
     "scripts\run-pubmed-literature-search.ps1",
     "scripts\run-tier2-cloud-task.ps1",
     "scripts\set-approved-write-lock.ps1",
-    "scripts\export-agentic-memory-core.ps1"
+    "scripts\export-agentic-memory-core.ps1",
+    "modules\email-review",
+    ".github\workflows\email-review-tests.yml"
 )
 
 if (Test-Path -LiteralPath $destinationPath) {
@@ -132,6 +134,9 @@ config/gmail-smtp.json
 
 # Export artefacts
 exports/
+
+# Private email-review configuration, packets, state and digests
+workspace/email-review/
 
 # OS / editor noise
 .DS_Store

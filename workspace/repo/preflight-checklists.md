@@ -73,6 +73,8 @@ Use for literature reviews, web searches, source discovery, DOI/PubMed/Crossref 
 
 ## Signal Review
 
+For the optional public email-review module, also load `workspace/repo/email-review.md`. Use its demo, doctor, setup, scan, and completion sequence; confirm the selected mailbox, project allowlist, and model-processing route. Validate complete message coverage before committing scan progress. Scheduling is a separate opt-in action.
+
 Use for repeated review of incoming messages, feeds, alerts, calendars, dashboards, or other time-windowed streams.
 
 - [ ] Load `workspace/repo/signal-review-protocol.md`.

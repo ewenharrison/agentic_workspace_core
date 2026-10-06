@@ -76,6 +76,13 @@ When adding a candidate, include:
 
 ## Promoted
 
+### 2026-10-06: installable classic Outlook email-review pilot
+- Status: `Promoted`
+- Why: the project-aware email workflow needs a generic installation path with explicit mailbox/project selection and reliable resumable batches.
+- Promoted files/conventions: `modules/email-review/`, public README onboarding, `workspace/repo/email-review.md`, shared/preflight routing, ignored runtime, export allowlist, and synthetic Windows CI.
+- Validation: synthetic batching, checkpoints, failure/retry, review coverage, mocked Outlook, and command-level completion tests. Live setup and model calls require a pilot user's own configuration; no live data or private automation is promoted.
+- Scope: Windows/classic Outlook, manual review and optional API scheduling. Graph, calendar, reply tracking, and external reminders remain separate future connectors/features.
+
 ### 2026-09-02: source-grounded personal profile onboarding
 - Status: `Promoted`
 - Why: new users need a safe, reproducible way to build the optional profile from CVs, biographies, writing samples, exported LLM memories, and explicit preferences without turning imported model output into trusted personal memory.

@@ -1,0 +1,21 @@
+name: Email review synthetic tests
+on:
+  workflow_dispatch:
+  push:
+    paths:
+      - 'modules/email-review/**'
+      - '.github/workflows/email-review-tests.yml'
+  pull_request:
+    paths:
+      - 'modules/email-review/**'
+      - '.github/workflows/email-review-tests.yml'
+permissions:
+  contents: read
+jobs:
+  synthetic:
+    runs-on: windows-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Run offline synthetic regression suite
+        shell: powershell
+        run: ./modules/email-review/tests/run-tests.ps1

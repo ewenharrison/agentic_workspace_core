@@ -7,6 +7,9 @@ config/gmail-smtp.json
 # Export artefacts
 exports/
 
+# Private email-review configuration, packets, state and digests
+workspace/email-review/
+
 # OS / editor noise
 .DS_Store
 Thumbs.db

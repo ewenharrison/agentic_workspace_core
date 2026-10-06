@@ -115,6 +115,8 @@ If a procedure changes, update it here first and then only add project-specific 
 
 ## Signal Review Rule
 
+- For the optional public email-review module, load [email-review.md](email-review.md) and its module guide. Use the separate `workspace/email-review/` runtime and explicit project selection; do not reuse private account-specific collectors or live state when installing it for someone else.
+
 - Use [signal-review-protocol.md](signal-review-protocol.md) for repeated review of incoming signals such as messages, feeds, alerts, calendars, dashboards, or other time-windowed streams.
 - Signal review is read-only by default. It may collect bounded input packets, write project-facing digests, and suggest actions, but it must not send messages, post publicly, edit external systems, import raw source material, or update completed scan state unless those actions are separately authorised.
 - Keep temporary scan packets, pending state, completed state, logs, and digests separate. Completed state should advance only after a digest is written and validated.

@@ -86,6 +86,20 @@ Independently review the draft application at <path-to-document> against the cri
 
 Useful control phrases include `do not write yet`, `keep this in working`, `use approved sources only`, `stop before external action`, and `ask before committing or pushing`. These make the human approval boundary explicit without requiring a specialised command language.
 
+### Email Review (Optional Windows Pilot)
+
+The [email review module](./modules/email-review/README.md) connects incoming mail to the projects you select. It produces private digests, proposed replies, and copyable project handoff prompts. It supports classic Outlook on Windows, with manual review first and optional local scheduling.
+
+```text
+Set up email review using modules/email-review/README.md.
+Run the synthetic demo, check classic Outlook access, help me select
+my mailbox and relevant projects, then collect a small manual batch.
+Explain where the content will be processed before LLM review.
+Show me the digest and leave scheduling disabled for now.
+```
+
+Email stays unchanged. Configuration, packets, and digests are excluded from Git. Scheduled model review requires a separately configured API key and explicit acceptance of sending email excerpts and selected project context to the API. New Outlook and macOS require a future connector. See the module guide for installation, status, disabling, and uninstalling.
+
 ## What This Repo Is
 
 This repo contains the reusable structure only.
